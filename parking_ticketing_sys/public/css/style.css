@@ -83,7 +83,7 @@ html, body {
 }
 
 .login-header {
-    background: #4CAF50;
+    background: #0056b3;
     color: white;
     text-align: center;
     padding: 2rem 1rem;
@@ -100,7 +100,7 @@ html, body {
     font-size: 3rem;
     margin-bottom: 0.5rem;
     opacity: 0.9;
-    text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
 
 .login-body {
@@ -116,7 +116,7 @@ html, body {
 }
 
 .btn-login {
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
     border: none;
     border-radius: 25px;
     padding: 0.75rem 2rem;
@@ -128,9 +128,9 @@ html, body {
 }
 
 .btn-login:hover {
-    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
 }
 
 .input-group-text {
@@ -156,14 +156,13 @@ html, body {
 .form-control:focus {
     background: white;
     color: #212529;
-    border-color: #4CAF50;
-    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 /* Login navbar and footer styles */
 .login-navbar {
-    background: rgba(102, 126, 234, 0.95);
-    backdrop-filter: blur(15px);
+    background: #007bff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     position: fixed;
     top: 0;
@@ -192,8 +191,7 @@ html, body {
 }
 
 .login-footer {
-    background: rgba(240, 147, 251, 0.95);
-    backdrop-filter: blur(15px);
+    background: #007bff;
     color: white;
     padding: 20px 0;
     position: fixed;
@@ -230,14 +228,14 @@ html, body {
 }
 
 .alert-success {
-    background: rgba(40, 167, 69, 0.9);
+    background: rgba(0, 123, 255, 0.9);
     color: white;
     border-color: rgba(255, 255, 255, 0.3);
 }
 
 .form-control:focus {
-    border-color: #4CAF50;
-    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .alert {

@@ -44,13 +44,30 @@ html, body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: white;
+    background: url('../images/parking.png') no-repeat center center;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
     padding: 60px 0 0 0;
     z-index: 9998; /* Below header and footer */
+}
+
+.login-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dim overlay */
+    z-index: 1;
+}
+
+.login-page .container {
+    position: relative;
+    z-index: 2;
 }
 
 .login-card {

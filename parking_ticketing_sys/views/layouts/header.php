@@ -23,7 +23,7 @@
                         <i class="fas fa-user-circle me-1"></i>Welcome, <?php echo getCurrentUser()['name']; ?>
                     </span>
                     <a class="nav-link" href="/parking_ticketing_sys/parking_ticketing_sys/controllers/AuthController.php?action=logout">
-                        <i class="fas fa-sign-out-alt me-1"></i>Logout
+                        <i class="fas fa-right-from-bracket me-1"></i>Logout
                     </a>
                 <?php endif; ?>
             </div>

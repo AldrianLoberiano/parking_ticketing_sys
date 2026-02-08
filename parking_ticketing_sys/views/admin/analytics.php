@@ -62,7 +62,7 @@ AdminController::dashboard(); // to get analytics
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
                             <li><a class="dropdown-item" href="../../controllers/AuthController.php?action=logout">
-                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                                    <i class="fas fa-right-from-bracket me-1"></i>Logout
                                 </a></li>
                         </ul>
                     </li>
@@ -128,7 +128,7 @@ AdminController::dashboard(); // to get analytics
                                         <th><i class="fas fa-user me-2"></i>Owner</th>
                                         <th><i class="fas fa-parking me-2"></i>Slot</th>
                                         <th><i class="fas fa-sign-in-alt me-2"></i>Check-in</th>
-                                        <th><i class="fas fa-sign-out-alt me-2"></i>Check-out</th>
+                                        <th><i class="fas fa-right-from-bracket me-2"></i>Check-out</th>
                                         <th><i class="fas fa-info-circle me-2"></i>Status</th>
                                     </tr>
                                 </thead>

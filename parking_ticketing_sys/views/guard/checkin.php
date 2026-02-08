@@ -23,7 +23,7 @@ GuardController::checkin();
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="dashboard.php">
-                <i class="fas fa-shield-alt me-2"></i>Parking Guard
+                <i class="fas fa-shield-halved me-2"></i>Parking Guard
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#guardNavbar" aria-controls="guardNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,7 +42,7 @@ GuardController::checkin();
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="checkout.php">
-                            <i class="fas fa-sign-out-alt me-1"></i>Check-out
+                            <i class="fas fa-right-from-bracket me-1"></i>Check-out
                         </a>
                     </li>
                 </ul>
@@ -53,7 +53,7 @@ GuardController::checkin();
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="guardDropdown">
                             <li><a class="dropdown-item" href="/parking_ticketing_sys/parking_ticketing_sys/controllers/AuthController.php?action=logout">
-                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                                    <i class="fas fa-right-from-bracket me-1"></i>Logout
                                 </a></li>
                         </ul>
                     </li>
@@ -153,7 +153,7 @@ GuardController::checkin();
                                     <h4 class="text-muted">No Available Slots</h4>
                                     <p class="text-muted">All parking spaces are currently occupied.</p>
                                     <a href="checkout.php" class="btn btn-warning">
-                                        <i class="fas fa-sign-out-alt me-2"></i>
+                                        <i class="fas fa-right-from-bracket me-2"></i>
                                         Process Check-out
                                     </a>
                                 </div>

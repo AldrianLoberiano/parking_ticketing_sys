@@ -5,14 +5,16 @@ require_once '../../controllers/AdminController.php';
 
 AdminController::manageSlots();
 ?>
-
+<?php
+if (!isset($slots)) $slots = [];
+if (!isset($areas)) $areas = [];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;">
     <title>Parking Ticketing System - Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -30,7 +32,7 @@ AdminController::manageSlots();
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="adminNavbar">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard.php">
                             <i class="fas fa-tachometer-alt me-1"></i>Dashboard
@@ -64,8 +66,8 @@ AdminController::manageSlots();
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
                             <li><a class="dropdown-item" href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout">
-                                <i class="fas fa-sign-out-alt me-1"></i>Logout
-                            </a></li>
+                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                                </a></li>
                         </ul>
                     </li>
                 </ul>
@@ -77,20 +79,32 @@ AdminController::manageSlots();
         <div class="row">
             <div class="col-12">
 
-                <h2 class="mb-2"><i class="fas fa-parking me-2"></i>Manage Parking Slots</h2>
+                <!-- Welcome Card -->
+                <div class="card mb-2 bg-danger text-white">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="card-title"><i class="fas fa-parking me-2"></i>Slot Management</h5>
+                                <p class="card-text">Configure parking slots effectively. Create, edit, and monitor slot availability across different areas for optimal parking management.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <?php $flash = getFlashMessage();
                 if ($flash): ?>
                     <div class="alert alert-<?php echo $flash['type'] == 'error' ? 'danger' : 'success'; ?> alert-dismissible fade show">
                         <i class="fas fa-<?php echo $flash['type'] == 'error' ? 'exclamation-triangle' : 'check-circle'; ?> me-2"></i>
-                        <?php echo $flash['message']; ?>
+                        <?php echo htmlspecialchars($flash['message'], ENT_QUOTES, 'UTF-8'); ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 <?php endif; ?>
 
-                <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createSlotModal">
-                    <i class="fas fa-plus me-2"></i>Add Slot
-                </button>
+                <div class="text-center mb-4">
+                    <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#createSlotModal">
+                        <i class="fas fa-plus me-2"></i>Add Slot
+                    </button>
+                </div>
 
                 <div class="card">
                     <div class="card-body">
@@ -110,8 +124,17 @@ AdminController::manageSlots();
                                             <td><?php echo htmlspecialchars($slot['area_name']); ?></td>
                                             <td><?php echo htmlspecialchars($slot['slot_number']); ?></td>
                                             <td>
-                                                <span class="badge bg-<?php echo $slot['status'] == 'available' ? 'success' : ($slot['status'] == 'occupied' ? 'warning' : 'secondary'); ?>">
-                                                    <?php echo ucfirst($slot['status']); ?>
+                                                <?php
+                                                $status = isset($slot['status']) ? (string) $slot['status'] : '';
+                                                $allowedStatusClasses = [
+                                                    'available' => 'success',
+                                                    'occupied'  => 'warning',
+                                                ];
+                                                $statusClass = isset($allowedStatusClasses[$status]) ? $allowedStatusClasses[$status] : 'secondary';
+                                                $statusLabel = htmlspecialchars(ucfirst($status), ENT_QUOTES, 'UTF-8');
+                                                ?>
+                                                <span class="badge bg-<?php echo $statusClass; ?>">
+                                                    <?php echo $statusLabel; ?>
                                                 </span>
                                             </td>
                                             <td>

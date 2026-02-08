@@ -12,7 +12,6 @@ AdminController::manageAreas();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;">
     <title>Parking Ticketing System - Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -30,7 +29,7 @@ AdminController::manageAreas();
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="adminNavbar">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard.php">
                             <i class="fas fa-tachometer-alt me-1"></i>Dashboard
@@ -64,8 +63,8 @@ AdminController::manageAreas();
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
                             <li><a class="dropdown-item" href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout">
-                                <i class="fas fa-sign-out-alt me-1"></i>Logout
-                            </a></li>
+                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                                </a></li>
                         </ul>
                     </li>
                 </ul>
@@ -77,7 +76,17 @@ AdminController::manageAreas();
         <div class="row">
             <div class="col-12">
 
-                <h2 class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Manage Parking Areas</h2>
+                <!-- Welcome Card -->
+                <div class="card mb-2 bg-warning text-dark">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="card-title"><i class="fas fa-map-marker-alt me-2"></i>Area Management</h5>
+                                <p class="card-text">Organize your parking infrastructure. Create and manage different parking zones and locations for efficient space utilization.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <?php $flash = getFlashMessage();
                 if ($flash): ?>
@@ -88,9 +97,11 @@ AdminController::manageAreas();
                     </div>
                 <?php endif; ?>
 
-                <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createAreaModal">
-                    <i class="fas fa-plus me-2"></i>Add Area
-                </button>
+                <div class="text-center mb-4">
+                    <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#createAreaModal">
+                        <i class="fas fa-plus me-2"></i>Add Area
+                    </button>
+                </div>
 
                 <div class="card">
                     <div class="card-body">

@@ -7,19 +7,34 @@ AdminController::dashboard();
 
 include '../layouts/admin_layout.php'; ?>
 
-<h1 class="h2"><i class="fas fa-tachometer-alt me-2"></i>Admin Dashboard</h1>
-
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+<div class="admin-header mb-2">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="h2 mb-1"><i class="fas fa-tachometer-alt me-2"></i>Admin Dashboard</h1>
+            <p class="text-muted mb-0">Welcome back, <?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?>!</p>
+        </div>
+        <div class="admin-nav">
+            <a href="manage_users.php" class="btn btn-outline-primary me-2">
+                <i class="fas fa-users me-1"></i>Users
+            </a>
+            <a href="manage_areas.php" class="btn btn-outline-success me-2">
+                <i class="fas fa-map-marker-alt me-1"></i>Areas
+            </a>
+            <a href="manage_slots.php" class="btn btn-outline-info me-2">
+                <i class="fas fa-parking me-1"></i>Slots
+            </a>
+            <a href="analytics.php" class="btn btn-outline-warning me-2">
+                <i class="fas fa-chart-bar me-1"></i>Analytics
+            </a>
+            <a href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="btn btn-outline-danger">
+                <i class="fas fa-sign-out-alt me-1"></i>Logout
+            </a>
         </div>
     </div>
 </div>
 
 <!-- Welcome Card -->
-<div class="card mb-4 bg-primary text-white">
+<div class="card mb-2 bg-primary text-white">
     <div class="card-body">
         <div class="d-flex align-items-center">
             <div class="flex-grow-1">
@@ -32,7 +47,7 @@ include '../layouts/admin_layout.php'; ?>
 
 <!-- Stats Cards -->
 <div class="row">
-    <div class="col-md-3 mb-4">
+    <div class="col-md-3 mb-3">
         <div class="card h-100 border-left-primary">
             <div class="card-body">
                 <div class="d-flex align-items-center">
@@ -47,7 +62,7 @@ include '../layouts/admin_layout.php'; ?>
             </div>
         </div>
     </div>
-    <div class="col-md-3 mb-4">
+    <div class="col-md-3 mb-3">
         <div class="card h-100 border-left-success">
             <div class="card-body">
                 <div class="d-flex align-items-center">
@@ -62,7 +77,7 @@ include '../layouts/admin_layout.php'; ?>
             </div>
         </div>
     </div>
-    <div class="col-md-3 mb-4">
+    <div class="col-md-3 mb-3">
         <div class="card h-100 border-left-info">
             <div class="card-body">
                 <div class="d-flex align-items-center">
@@ -77,7 +92,7 @@ include '../layouts/admin_layout.php'; ?>
             </div>
         </div>
     </div>
-    <div class="col-md-3 mb-4">
+    <div class="col-md-3 mb-3">
         <div class="card h-100 border-left-warning">
             <div class="card-body">
                 <div class="d-flex align-items-center">

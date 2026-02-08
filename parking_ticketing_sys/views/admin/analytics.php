@@ -7,7 +7,7 @@ AdminController::dashboard(); // to get analytics
 
 include '../layouts/admin_layout.php'; ?>
 
-<h2><i class="fas fa-chart-bar me-2"></i>Parking Analytics</h2>
+<h2 class="mb-2"><i class="fas fa-chart-bar me-2"></i>Parking Analytics</h2>
 
 <div class="row mb-4">
     <div class="col-md-4">

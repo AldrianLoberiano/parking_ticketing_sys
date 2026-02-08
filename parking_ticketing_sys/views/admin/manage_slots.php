@@ -7,7 +7,7 @@ AdminController::manageSlots();
 
 include '../layouts/admin_layout.php'; ?>
 
-<h2><i class="fas fa-parking me-2"></i>Manage Parking Slots</h2>
+<h2 class="mb-2"><i class="fas fa-parking me-2"></i>Manage Parking Slots</h2>
 
 <?php $flash = getFlashMessage();
 if ($flash): ?>

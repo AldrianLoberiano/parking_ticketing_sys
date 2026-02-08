@@ -7,7 +7,7 @@ AdminController::manageUsers();
 
 include '../layouts/admin_layout.php'; ?>
 
-<h2><i class="fas fa-users me-2"></i>Manage Users</h2>
+<h2 class="mb-2"><i class="fas fa-users me-2"></i>Manage Users</h2>
 
 <?php $flash = getFlashMessage();
 if ($flash): ?>

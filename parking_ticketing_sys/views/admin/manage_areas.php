@@ -7,7 +7,7 @@ AdminController::manageAreas();
 
 include '../layouts/admin_layout.php'; ?>
 
-<h2><i class="fas fa-map-marker-alt me-2"></i>Manage Parking Areas</h2>
+<h2 class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Manage Parking Areas</h2>
 
 <?php $flash = getFlashMessage();
 if ($flash): ?>

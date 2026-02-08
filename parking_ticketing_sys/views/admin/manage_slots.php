@@ -5,7 +5,7 @@ require_once '../../controllers/AdminController.php';
 
 AdminController::manageSlots();
 
-include '../layouts/header.php'; ?>
+include '../layouts/admin_layout.php'; ?>
 
 <h2>Manage Parking Slots</h2>
 
@@ -75,5 +75,4 @@ if ($flash): ?>
     </div>
 </div>
 
-<?php // include '../layouts/footer.php'; 
-?>
+<?php include '../layouts/admin_layout.php'; ?>

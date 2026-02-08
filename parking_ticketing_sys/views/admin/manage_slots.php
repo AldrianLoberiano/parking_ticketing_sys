@@ -5,10 +5,6 @@ require_once '../../controllers/AdminController.php';
 
 AdminController::manageSlots();
 ?>
-<?php
-if (!isset($slots)) $slots = [];
-if (!isset($areas)) $areas = [];
-?>
 <!DOCTYPE html>
 <html lang="en">
 

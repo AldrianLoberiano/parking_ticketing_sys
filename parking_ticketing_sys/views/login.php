@@ -51,9 +51,6 @@ $flash = getFlashMessage();
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                                        <i class="fas fa-eye" id="eyeIcon"></i>
-                                    </button>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-login">

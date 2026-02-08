@@ -5,8 +5,9 @@ require_once '../../controllers/AdminController.php';
 
 AdminController::dashboard();
 
-include '../layouts/header.php';
-?>
+include '../layouts/admin_layout.php'; ?>
+
+<h2><i class="fas fa-tachometer-alt me-2"></i>Admin Dashboard</h2>
 
 <div class="admin-fullscreen">
     <div class="admin-header">

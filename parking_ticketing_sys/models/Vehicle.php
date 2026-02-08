@@ -47,3 +47,4 @@ class Vehicle
         return $stmt->execute([$id]);
     }
 }
+

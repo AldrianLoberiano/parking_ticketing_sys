@@ -6,13 +6,13 @@ if (isLoggedIn()) {
     $user = getCurrentUser();
     switch ($user['role']) {
         case 'admin':
-            redirect('/tecketing/parking_ticketing_sys/views/admin/dashboard.php');
+            redirect('/parking_ticketing_sys/parking_ticketing_sys/views/admin/dashboard.php');
             break;
         case 'guard':
-            redirect('/tecketing/parking_ticketing_sys/views/guard/dashboard.php');
+            redirect('/parking_ticketing_sys/parking_ticketing_sys/views/guard/dashboard.php');
             break;
         case 'employee':
-            redirect('/tecketing/parking_ticketing_sys/views/employee/dashboard.php');
+            redirect('/parking_ticketing_sys/parking_ticketing_sys/views/employee/dashboard.php');
             break;
     }
 }

@@ -43,7 +43,7 @@ include '../layouts/header.php'; ?>
 <div class="mt-4">
     <a href="checkin.php" class="btn btn-success btn-lg">Check-in Vehicle</a>
     <a href="checkout.php" class="btn btn-danger btn-lg">Check-out Vehicle</a>
-    <a href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="btn btn-secondary">Logout</a>
+    <a href="/parking_ticketing_sys/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="btn btn-secondary">Logout</a>
 </div>
 
 <?php include '../layouts/footer.php'; ?>

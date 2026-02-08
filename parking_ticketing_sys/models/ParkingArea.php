@@ -39,3 +39,4 @@ class ParkingArea
         return $stmt->execute([$id]);
     }
 }
+

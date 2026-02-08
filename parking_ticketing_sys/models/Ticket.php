@@ -84,3 +84,4 @@ class Ticket
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
+

@@ -54,3 +54,4 @@ class GuardController
         $activeTickets = Ticket::getActive();
     }
 }
+

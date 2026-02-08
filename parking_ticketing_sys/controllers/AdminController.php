@@ -95,3 +95,4 @@ class AdminController
         $slots = ParkingSlot::getAll();
     }
 }
+

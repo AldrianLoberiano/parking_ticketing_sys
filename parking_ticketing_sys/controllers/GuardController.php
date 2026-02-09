@@ -19,20 +19,34 @@ class GuardController
         global $availableSlots;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $plate = sanitize($_POST['plate_number']);
+            $vehicleType = sanitize($_POST['vehicle_type']);
             $slotId = $_POST['slot_id'];
 
-            $vehicle = Vehicle::findByPlate($plate);
-            if (!$vehicle) {
-                flashMessage('error', 'Vehicle not registered');
+            // Validate required fields
+            if (empty($plate) || empty($vehicleType) || empty($slotId)) {
+                flashMessage('error', 'All fields are required');
                 redirect('checkin.php');
             }
 
-            if (Ticket::create($vehicle['id'], $slotId)) {
-                flashMessage('success', 'Check-in successful');
-            } else {
-                flashMessage('error', 'Check-in failed');
+            $vehicle = Vehicle::findByPlate($plate);
+            if (!$vehicle) {
+                // Vehicle not found, create it automatically for the current guard user
+                $guardId = $_SESSION['user_id'];
+                if (Vehicle::create($plate, $guardId, $vehicleType, 'Unknown')) {
+                    flashMessage('info', 'New vehicle registered automatically: ' . htmlspecialchars($plate));
+                    $vehicle = Vehicle::findByPlate($plate);
+                } else {
+                    flashMessage('error', 'Failed to register new vehicle. Please try again.');
+                    redirect('checkin.php');
+                }
             }
-            redirect('dashboard.php');
+
+            if (Ticket::create($vehicle['id'], $slotId)) {
+                flashMessage('success', 'Check-in successful for vehicle: ' . htmlspecialchars($plate) . ' (' . htmlspecialchars($vehicleType) . ')');
+            } else {
+                flashMessage('error', 'Check-in failed. The parking slot may no longer be available.');
+            }
+            redirect('checkin.php');
         }
         $availableSlots = ParkingSlot::getAvailable();
     }
@@ -54,4 +68,3 @@ class GuardController
         $activeTickets = Ticket::getActive();
     }
 }
-

@@ -128,14 +128,21 @@ parking_ticketing_sys/
 │   │   ├── header.php      # Main header template
 │   │   └── footer.php      # Main footer template
 │   ├── login.php           # Login page
-│   └── admin/              # Admin views
-│       ├── dashboard.php
-│       ├── manage_users.php
-│       ├── manage_areas.php
-│       ├── manage_slots.php
-│       └── analytics.php
-│   └── employee/           # Employee views
+│   ├── admin/              # Admin views
+│   │   ├── dashboard.php
+│   │   ├── manage_users.php
+│   │   ├── manage_areas.php
+│   │   ├── manage_slots.php
+│   │   └── analytics.php
+│   ├── employee/           # Employee views
+│   │   ├── dashboard.php
+│   │   ├── history.php
+│   │   └── register_vehicle.php
 │   └── guard/              # Guard views
+│       ├── dashboard.php
+│       ├── checkin.php
+│       ├── checkout.php
+│       └── checkin_temp.php
 ├── index.php               # Application entry point
 └── README.md
 ```
@@ -252,59 +259,5 @@ For issues or questions:
 
 ---
 
-**Last Updated**: February 8, 2026
+**Last Updated**: February 9, 2026
 **Version**: 1.0.0
-
-### Guard Features
-
-- Quick vehicle check-in by plate number
-- Vehicle check-out
-- Real-time parking availability
-
-### Employee Features
-
-- Register personal vehicles
-- View active parking tickets
-- Access parking history
-
-## Security Features
-
-- Password hashing using bcrypt
-- Input sanitization and validation
-- Role-based access control
-- Prepared statements to prevent SQL injection
-- Session management
-
-## Database Schema
-
-The system uses the following main tables:
-
-- `users`: User accounts with roles
-- `vehicles`: Vehicle information linked to owners
-- `parking_areas`: Parking locations
-- `parking_slots`: Individual parking spaces
-- `tickets`: Parking session records
-
-## Future Enhancements
-
-- QR code generation for tickets
-- RFID integration
-- License plate recognition
-- Mobile app API
-- Email/SMS notifications
-- Advanced reporting
-
-## Troubleshooting
-
-- **Database Connection Issues**: Verify credentials in `config/database.php`
-- **Permission Errors**: Check file permissions and web server configuration
-- **Session Issues**: Ensure PHP sessions are properly configured
-- **Blank Pages**: Check PHP error logs for syntax or runtime errors
-
-## Contributing
-
-This is a complete, runnable system. For modifications, ensure to follow PHP best practices and maintain the MVC-like structure.
-
-## PS! 
-
-This is Undone Project!!! Testing Using GROK CODE FAST 1 MODEL

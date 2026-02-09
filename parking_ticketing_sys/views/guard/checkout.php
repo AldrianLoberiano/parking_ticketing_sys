@@ -31,17 +31,17 @@ GuardController::checkout();
             <div class="collapse navbar-collapse" id="guardNavbar">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">
+                        <a class="nav-link me-3" href="dashboard.php">
                             <i class="fas fa-tachometer-alt me-1"></i>Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="checkin.php">
+                        <a class="nav-link me-3" href="checkin.php">
                             <i class="fas fa-car me-1"></i>Check-in
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="checkout.php">
+                        <a class="nav-link active me-3" href="checkout.php">
                             <i class="fas fa-right-from-bracket me-1"></i>Check-out
                         </a>
                     </li>

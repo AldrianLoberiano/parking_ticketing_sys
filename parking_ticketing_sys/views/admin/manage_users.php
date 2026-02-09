@@ -31,27 +31,27 @@ AdminController::manageUsers();
             <div class="collapse navbar-collapse" id="adminNavbar">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">
+                        <a class="nav-link me-3" href="dashboard.php">
                             <i class="fas fa-tachometer-alt me-1"></i>Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="manage_users.php">
+                        <a class="nav-link active me-3" href="manage_users.php">
                             <i class="fas fa-users me-1"></i>Users
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="manage_areas.php">
+                        <a class="nav-link me-3" href="manage_areas.php">
                             <i class="fas fa-map-marker-alt me-1"></i>Areas
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="manage_slots.php">
+                        <a class="nav-link me-3" href="manage_slots.php">
                             <i class="fas fa-parking me-1"></i>Slots
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="analytics.php">
+                        <a class="nav-link me-3" href="analytics.php">
                             <i class="fas fa-chart-bar me-1"></i>Analytics
                         </a>
                     </li>

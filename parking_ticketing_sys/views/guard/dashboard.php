@@ -31,17 +31,17 @@ GuardController::dashboard();
             <div class="collapse navbar-collapse" id="guardNavbar">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.php">
+                        <a class="nav-link active me-3" href="dashboard.php">
                             <i class="fas fa-tachometer-alt me-1"></i>Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="checkin.php">
+                        <a class="nav-link me-3" href="checkin.php">
                             <i class="fas fa-car me-1"></i>Check-in
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="checkout.php">
+                        <a class="nav-link me-3" href="checkout.php">
                             <i class="fas fa-right-from-bracket me-1"></i>Check-out
                         </a>
                     </li>
@@ -63,74 +63,88 @@ GuardController::dashboard();
     </nav>
 
     <div class="container-fluid p-4">
-        <!-- Welcome Header -->
-        <div class="welcome-section mb-4">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <h1 class="dashboard-title">
-                        <i class="fas fa-shield-halved me-3"></i>
-                        Security Guard Dashboard
-                    </h1>
-                    <p class="dashboard-subtitle text-muted">Monitor parking activity and manage vehicle check-ins/check-outs</p>
-                </div>
-                <div class="col-lg-4 text-lg-end">
-                    <div class="current-time">
-                        <i class="fas fa-clock me-2"></i>
-                        <span id="currentTime"></span>
+        <!-- Welcome Card -->
+        <div class="card mb-4 bg-primary text-white">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1">
+                        <h5 class="card-title"><i class="fas fa-shield-halved me-2"></i>Security Guard Dashboard</h5>
+                        <p class="card-text">Monitor parking activity and manage vehicle check-ins/check-outs</p>
+                    </div>
+                    <div class="text-white">
+                        <i class="fas fa-clock fa-2x me-2"></i>
+                        <div class="d-inline-block">
+                            <div class="fw-bold" id="currentTime"></div>
+                            <small>Current Time</small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Statistics Cards -->
-        <div class="stats-section mb-4">
-            <div class="row g-3">
-                <div class="col-md-6 col-lg-3">
-                    <div class="stat-card available-slots">
-                        <div class="stat-icon">
-                            <i class="fas fa-parking"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3 class="stat-number"><?php echo count($availableSlots); ?></h3>
-                            <p class="stat-label">Available Slots</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="stat-card occupied-slots">
-                        <div class="stat-icon">
-                            <i class="fas fa-car"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3 class="stat-number"><?php echo count($activeTickets); ?></h3>
-                            <p class="stat-label">Occupied Slots</p>
+        <!-- Stats Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="card h-100 border-left-success">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="card-title text-success"><i class="fas fa-parking me-2"></i>Available Slots</h5>
+                                <h2 class="mb-0"><?php echo count($availableSlots); ?></h2>
+                            </div>
+                            <div class="text-success">
+                                <i class="fas fa-parking fa-2x"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="stat-card total-slots">
-                        <div class="stat-icon">
-                            <i class="fas fa-calculator"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3 class="stat-number"><?php echo count($availableSlots) + count($activeTickets); ?></h3>
-                            <p class="stat-label">Total Slots</p>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100 border-left-warning">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="card-title text-warning"><i class="fas fa-car me-2"></i>Occupied Slots</h5>
+                                <h2 class="mb-0"><?php echo count($activeTickets); ?></h2>
+                            </div>
+                            <div class="text-warning">
+                                <i class="fas fa-car fa-2x"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="stat-card occupancy-rate">
-                        <div class="stat-icon">
-                            <i class="fas fa-chart-pie"></i>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100 border-left-info">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="card-title text-info"><i class="fas fa-calculator me-2"></i>Total Slots</h5>
+                                <h2 class="mb-0"><?php echo count($availableSlots) + count($activeTickets); ?></h2>
+                            </div>
+                            <div class="text-info">
+                                <i class="fas fa-calculator fa-2x"></i>
+                            </div>
                         </div>
-                        <div class="stat-content">
-                            <h3 class="stat-number">
-                                <?php
-                                $total = count($availableSlots) + count($activeTickets);
-                                echo $total > 0 ? round((count($activeTickets) / $total) * 100) : 0;
-                                ?>%
-                            </h3>
-                            <p class="stat-label">Occupancy Rate</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100 border-left-primary">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="card-title text-primary"><i class="fas fa-chart-pie me-2"></i>Occupancy Rate</h5>
+                                <h2 class="mb-0">
+                                    <?php
+                                    $total = count($availableSlots) + count($activeTickets);
+                                    echo $total > 0 ? round((count($activeTickets) / $total) * 100) : 0;
+                                    ?>%
+                                </h2>
+                            </div>
+                            <div class="text-primary">
+                                <i class="fas fa-chart-pie fa-2x"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -218,25 +232,25 @@ GuardController::dashboard();
         </div>
 
         <!-- Quick Actions -->
-        <div class="quick-actions-section mt-4">
-            <div class="card shadow-sm">
-                <div class="card-body text-center">
-                    <h5 class="card-title mb-3">
-                        <i class="fas fa-bolt text-warning me-2"></i>
-                        Quick Actions
-                    </h5>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="checkin.php" class="btn btn-success btn-lg px-4">
-                            <i class="fas fa-car me-2"></i>
-                            Check-in Vehicle
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5><i class="fas fa-bolt me-2"></i>Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <a href="checkin.php" class="btn btn-success btn-lg w-100">
+                            <i class="fas fa-car me-2"></i>Check-in Vehicle
                         </a>
-                        <a href="checkout.php" class="btn btn-danger btn-lg px-4">
-                            <i class="fas fa-right-from-bracket me-2"></i>
-                            Check-out Vehicle
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="checkout.php" class="btn btn-danger btn-lg w-100">
+                            <i class="fas fa-right-from-bracket me-2"></i>Check-out Vehicle
                         </a>
-                        <a href="/parking_ticketing_sys/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="btn btn-outline-secondary btn-lg px-4">
-                            <i class="fas fa-right-from-bracket me-2"></i>
-                            Logout
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a href="/parking_ticketing_sys/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="btn btn-secondary btn-lg w-100">
+                            <i class="fas fa-right-from-bracket me-2"></i>Logout
                         </a>
                     </div>
                 </div>

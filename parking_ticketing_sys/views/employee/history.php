@@ -12,9 +12,10 @@ EmployeeController::history();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Ticketing System - Admin</title>
+    <title>Parking Ticketing System - Employee</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="/parking_ticketing_sys/parking_ticketing_sys/public/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -23,7 +24,7 @@ EmployeeController::history();
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="dashboard.php">
-                <i class="fas fa-parking me-2"></i>Parking Admin
+                <i class="fas fa-parking me-2"></i>Parking Employee
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -66,33 +67,22 @@ EmployeeController::history();
         <div class="row">
             <div class="col-12">
 
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Parking History</li>
-                            </ol>
-                        </nav>
+                <!-- Welcome Card -->
+                <div class="card mb-4 bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="card-title"><i class="fas fa-history me-2"></i>Parking History</h5>
+                                <p class="card-text">View your complete parking session history and records.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
                         <div class="card shadow border-0">
-                            <div class="card-header bg-info text-white">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-history me-2"></i>
-                                        <h4 class="mb-0">Parking History</h4>
-                                    </div>
-                                    <div class="badge bg-light text-info fs-6">
-                                        <?php echo count($history ?? []); ?> records
-                                    </div>
-                                </div>
-                                <p class="mb-0 mt-1 opacity-75">View all your past and current parking sessions</p>
-                            </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
 
                                 <?php if (empty($history)): ?>
                                     <div class="empty-state">

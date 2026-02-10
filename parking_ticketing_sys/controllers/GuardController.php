@@ -17,6 +17,8 @@ class GuardController
     {
         requireRole('guard');
         global $availableSlots;
+        $GLOBALS['availableSlots'] = ParkingSlot::getAvailable();
+        $GLOBALS['allVehicles'] = Vehicle::getAll();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $plate = sanitize($_POST['plate_number']);
             $vehicleType = sanitize($_POST['vehicle_type']);

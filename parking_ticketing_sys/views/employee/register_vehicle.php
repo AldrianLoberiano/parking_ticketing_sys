@@ -12,9 +12,10 @@ EmployeeController::registerVehicle();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Ticketing System - Admin</title>
+    <title>Parking Ticketing System - Employee</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="/parking_ticketing_sys/parking_ticketing_sys/public/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -23,7 +24,7 @@ EmployeeController::registerVehicle();
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="dashboard.php">
-                <i class="fas fa-parking me-2"></i>Parking Admin
+                <i class="fas fa-parking me-2"></i>Parking Employee
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -65,6 +66,18 @@ EmployeeController::registerVehicle();
     <div class="container-fluid p-4">
         <div class="row">
             <div class="col-12">
+
+                <!-- Welcome Card -->
+                <div class="card mb-4 bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h5 class="card-title"><i class="fas fa-car me-2"></i>Register New Vehicle</h5>
+                                <p class="card-text">Add your vehicle details to the parking system for easy check-in</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row mb-4">
                     <div class="col-12">

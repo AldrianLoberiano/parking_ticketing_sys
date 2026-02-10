@@ -127,8 +127,8 @@ AdminController::manageUsers();
                                                 </span>
                                             </td>
                                             <td>
-                                                <span class="badge bg-<?php echo $user['status'] == 'active' ? 'success' : 'secondary'; ?>">
-                                                    <?php echo ucfirst($user['status']); ?>
+                                                <span class="badge bg-<?php echo ($user['status'] ?? 'active') == 'active' ? 'success' : 'secondary'; ?>">
+                                                    <?php echo ucfirst($user['status'] ?? 'active'); ?>
                                                 </span>
                                             </td>
                                             <td>

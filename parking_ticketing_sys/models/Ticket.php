@@ -11,12 +11,13 @@ class Ticket
             // Create ticket
             $stmt = $pdo->prepare("INSERT INTO tickets (vehicle_id, slot_id) VALUES (?, ?)");
             $stmt->execute([$vehicleId, $slotId]);
+            $ticketId = $pdo->lastInsertId();
 
             // Update slot status
             ParkingSlot::updateStatus($slotId, 'occupied');
 
             $pdo->commit();
-            return true;
+            return $ticketId;
         } catch (Exception $e) {
             $pdo->rollBack();
             return false;

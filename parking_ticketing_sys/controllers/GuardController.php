@@ -18,7 +18,6 @@ class GuardController
         requireRole('guard');
         global $availableSlots;
         $GLOBALS['availableSlots'] = ParkingSlot::getAvailable();
-        $GLOBALS['allVehicles'] = Vehicle::getAll();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $plate = sanitize($_POST['plate_number']);
             $vehicleType = sanitize($_POST['vehicle_type']);
@@ -43,7 +42,7 @@ class GuardController
                 }
             }
 
-            if (Ticket::create($vehicle['id'], $slotId)) {
+            if ($ticketId = Ticket::create($vehicle['id'], $slotId)) {
                 flashMessage('success', 'Check-in successful for vehicle: ' . htmlspecialchars($plate) . ' (' . htmlspecialchars($vehicleType) . ')');
             } else {
                 flashMessage('error', 'Check-in failed. The parking slot may no longer be available.');

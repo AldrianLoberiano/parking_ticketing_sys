@@ -79,17 +79,6 @@ EmployeeController::registerVehicle();
                     </div>
                 </div>
 
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Register Vehicle</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="card shadow border-0">

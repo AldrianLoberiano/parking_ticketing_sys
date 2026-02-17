@@ -234,16 +234,6 @@ To enable debug mode, you can modify the database configuration to show detailed
 - [ ] Multi-language support
 - [ ] RESTful API for third-party integrations
 
-## Contributing
-
-This is a complete, runnable system. For modifications:
-
-1. Fork the repository
-2. Create a feature branch
-3. Follow PHP best practices and maintain the MVC structure
-4. Test changes across all user roles
-5. Submit a pull request with detailed description
-
 ## License
 
 This project is open-source and available under the MIT License.

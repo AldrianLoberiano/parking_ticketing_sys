@@ -234,10 +234,6 @@ To enable debug mode, you can modify the database configuration to show detailed
 - [ ] Multi-language support
 - [ ] RESTful API for third-party integrations
 
-## License
-
-This project is open-source and available under the MIT License.
-
 ## Support
 
 For issues or questions:

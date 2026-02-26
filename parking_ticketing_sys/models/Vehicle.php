@@ -19,9 +19,19 @@ class Vehicle
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function create($plate, $ownerId, $model, $color)
+    public static function create($plate, $ownerId, $model, $color, $image = null)
     {
         global $pdo;
+        if ($image) {
+            try {
+                $stmt = $pdo->prepare("INSERT INTO vehicles (plate_number, owner_id, model, color, plate_image) VALUES (?, ?, ?, ?, ?)");
+                return $stmt->execute([$plate, $ownerId, $model, $color, $image]);
+            } catch (PDOException $e) {
+                // plate_image column may not exist yet, fallback
+                $stmt = $pdo->prepare("INSERT INTO vehicles (plate_number, owner_id, model, color) VALUES (?, ?, ?, ?)");
+                return $stmt->execute([$plate, $ownerId, $model, $color]);
+            }
+        }
         $stmt = $pdo->prepare("INSERT INTO vehicles (plate_number, owner_id, model, color) VALUES (?, ?, ?, ?)");
         return $stmt->execute([$plate, $ownerId, $model, $color]);
     }

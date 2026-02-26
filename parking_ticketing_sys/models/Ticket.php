@@ -65,7 +65,7 @@ class Ticket
     public static function getByVehicle($vehicleId)
     {
         global $pdo;
-        $stmt = $pdo->prepare("SELECT t.*, ps.slot_number, pa.name as area_name FROM tickets t JOIN parking_slots ps ON t.slot_id = ps.id JOIN parking_areas pa ON ps.area_id = pa.id WHERE t.vehicle_id = ? ORDER BY t.checkin_time DESC");
+        $stmt = $pdo->prepare("SELECT t.*, v.plate_number, ps.slot_number, pa.name as area_name FROM tickets t JOIN vehicles v ON t.vehicle_id = v.id JOIN parking_slots ps ON t.slot_id = ps.id JOIN parking_areas pa ON ps.area_id = pa.id WHERE t.vehicle_id = ? ORDER BY t.checkin_time DESC");
         $stmt->execute([$vehicleId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

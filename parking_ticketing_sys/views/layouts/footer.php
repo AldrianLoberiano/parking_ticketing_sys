@@ -6,7 +6,7 @@
                 <div class="col-md-6">
                     <p class="mb-0">
                         <i class="fas fa-copyright me-1"></i>
-                        2026 Parking Ticketing System. All rights reserved.
+                        2026 ParkEase — Parking Control and Monitoring System. All rights reserved.
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">

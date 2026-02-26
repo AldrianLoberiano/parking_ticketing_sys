@@ -12,101 +12,98 @@ AdminController::manageAreas();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Ticketing System - Admin</title>
+    <title>Areas — Parking Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/tecketing/parking_ticketing_sys/public/css/style.css" rel="stylesheet">
+    <link href="/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
 </head>
 
-<body>
-    <!-- Black Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.php">
-                <i class="fas fa-parking me-2"></i>Parking Admin
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="adminNavbar">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">
-                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage_users.php">
-                            <i class="fas fa-users me-1"></i>Users
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="manage_areas.php">
-                            <i class="fas fa-map-marker-alt me-1"></i>Areas
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage_slots.php">
-                            <i class="fas fa-parking me-1"></i>Slots
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="analytics.php">
-                            <i class="fas fa-chart-bar me-1"></i>Analytics
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user-shield me-1"></i><?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
-                            <li><a class="dropdown-item" href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout">
-                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
-                                </a></li>
-                        </ul>
-                    </li>
-                </ul>
+<body class="admin-body">
+    <div class="admin-wrapper">
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="sidebar-brand">
+                <div class="sidebar-brand-icon"><i class="fas fa-parking"></i></div>
+                <div class="sidebar-brand-text">ParkAdmin<small>Ticketing System</small></div>
             </div>
-        </div>
-    </nav>
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-label">Main</li>
+                <li class="sidebar-nav-item">
+                    <a href="dashboard.php" class="sidebar-nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                </li>
+                <li class="sidebar-nav-label">Management</li>
+                <li class="sidebar-nav-item">
+                    <a href="manage_users.php" class="sidebar-nav-link"><i class="fas fa-users"></i> Users</a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="manage_areas.php" class="sidebar-nav-link active"><i class="fas fa-map-marker-alt"></i> Areas</a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="manage_slots.php" class="sidebar-nav-link"><i class="fas fa-parking"></i> Slots</a>
+                </li>
+                <li class="sidebar-nav-label">Reports</li>
+                <li class="sidebar-nav-item">
+                    <a href="analytics.php" class="sidebar-nav-link"><i class="fas fa-chart-bar"></i> Analytics</a>
+                </li>
+                <li class="sidebar-nav-label">System</li>
+                <li class="sidebar-nav-item">
+                    <a href="backup.php" class="sidebar-nav-link"><i class="fas fa-database"></i> Backup & Recovery</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar"><?php echo strtoupper(substr($_SESSION['user_name'] ?? 'A', 0, 1)); ?></div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name"><?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?></div>
+                        <div class="sidebar-user-role">Administrator</div>
+                    </div>
+                    <a href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="sidebar-logout-btn" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
 
-    <div class="container-fluid p-4">
-        <div class="row">
-            <div class="col-12">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-                <!-- Welcome Card -->
-                <div class="card mb-2 bg-warning text-dark">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <h5 class="card-title"><i class="fas fa-map-marker-alt me-2"></i>Area Management</h5>
-                                <p class="card-text">Organize your parking infrastructure. Create and manage different parking zones and locations for efficient space utilization.</p>
-                            </div>
-                        </div>
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+                    <div class="topbar-title">
+                        <h1>Area Management</h1>
+                        <p>Create and organize parking zones</p>
                     </div>
                 </div>
+                <div class="topbar-actions">
+                    <button class="btn-admin-primary" data-bs-toggle="modal" data-bs-target="#createAreaModal">
+                        <i class="fas fa-plus"></i> Add Area
+                    </button>
+                </div>
+            </div>
 
+            <div class="admin-content">
                 <?php $flash = getFlashMessage();
                 if ($flash): ?>
-                    <div class="alert alert-<?php echo $flash['type'] == 'error' ? 'danger' : 'success'; ?> alert-dismissible fade show">
-                        <i class="fas fa-<?php echo $flash['type'] == 'error' ? 'exclamation-triangle' : 'check-circle'; ?> me-2"></i>
+                    <div class="admin-alert <?php echo $flash['type'] == 'error' ? 'error' : 'success'; ?>">
+                        <i class="fas fa-<?php echo $flash['type'] == 'error' ? 'exclamation-circle' : 'check-circle'; ?>"></i>
                         <?php echo $flash['message']; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 <?php endif; ?>
 
-                <div class="text-center mb-4">
-                    <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#createAreaModal">
-                        <i class="fas fa-plus me-2"></i>Add Area
-                    </button>
+                <div class="section-header">
+                    <h2><i class="fas fa-map-marker-alt"></i> All Areas (<?php echo count($areas); ?>)</h2>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="areaSearch" placeholder="Search areas...">
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-body">
+                <div class="admin-card">
+                    <div class="admin-card-body" style="padding:0;">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="admin-table" id="areasTable">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -115,25 +112,29 @@ AdminController::manageAreas();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($areas as $area): ?>
-                                        <tr>
-                                            <td><?php echo htmlspecialchars($area['name']); ?></td>
-                                            <td><?php echo htmlspecialchars($area['location']); ?></td>
-                                            <td>
-                                                <div class="btn-group" role="group">
-                                                    <button class="btn btn-sm btn-outline-primary" onclick="editArea(<?php echo $area['id']; ?>, '<?php echo htmlspecialchars($area['name']); ?>', '<?php echo htmlspecialchars($area['location']); ?>')">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
-                                                    <form method="post" style="display:inline;">
-                                                        <input type="hidden" name="id" value="<?php echo $area['id']; ?>">
-                                                        <button type="submit" name="delete" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this area?')">
-                                                            <i class="fas fa-trash"></i>
+                                    <?php if (!empty($areas)): ?>
+                                        <?php foreach ($areas as $area): ?>
+                                            <tr data-name="<?php echo strtolower($area['name']); ?>" data-location="<?php echo strtolower($area['location'] ?? ''); ?>">
+                                                <td><strong><?php echo htmlspecialchars($area['name']); ?></strong></td>
+                                                <td><?php echo htmlspecialchars($area['location'] ?? '—'); ?></td>
+                                                <td>
+                                                    <div style="display:flex;gap:0.35rem;">
+                                                        <button class="btn-admin-sm btn-edit" onclick="editArea(<?php echo $area['id']; ?>, '<?php echo htmlspecialchars($area['name']); ?>', '<?php echo htmlspecialchars($area['location'] ?? ''); ?>')" title="Edit">
+                                                            <i class="fas fa-pen"></i>
                                                         </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                                        <form method="post" style="display:inline;">
+                                                            <input type="hidden" name="id" value="<?php echo $area['id']; ?>">
+                                                            <button type="submit" name="delete" class="btn-admin-sm btn-delete" onclick="return confirm('Delete this area?')" title="Delete">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr><td colspan="3" class="text-center" style="padding:2rem;color:var(--text-muted);">No areas found. Add one to get started.</td></tr>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -145,22 +146,23 @@ AdminController::manageAreas();
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Add New Area</h5>
+                                <h5 class="modal-title"><i class="fas fa-plus-circle me-2"></i>Add New Area</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <form method="post">
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" name="name" class="form-control" required>
+                                        <label for="name" class="form-label">Area Name</label>
+                                        <input type="text" name="name" class="form-control" placeholder="e.g. Basement Level 1" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="location" class="form-label">Location</label>
-                                        <input type="text" name="location" class="form-control">
+                                        <input type="text" name="location" class="form-control" placeholder="e.g. Building A">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" name="create" class="btn btn-primary">Create Area</button>
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" name="create" class="btn-admin-primary">Create Area</button>
                                 </div>
                             </form>
                         </div>
@@ -172,14 +174,14 @@ AdminController::manageAreas();
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Edit Area</h5>
+                                <h5 class="modal-title"><i class="fas fa-edit me-2"></i>Edit Area</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <form method="post">
                                 <div class="modal-body">
                                     <input type="hidden" name="id" id="editAreaId">
                                     <div class="mb-3">
-                                        <label for="editAreaName" class="form-label">Name</label>
+                                        <label for="editAreaName" class="form-label">Area Name</label>
                                         <input type="text" name="name" id="editAreaName" class="form-control" required>
                                     </div>
                                     <div class="mb-3">
@@ -188,52 +190,49 @@ AdminController::manageAreas();
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" name="update" class="btn btn-primary">Update Area</button>
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" name="update" class="btn-admin-primary">Update Area</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
-                <script>
-                    function editArea(id, name, location) {
-                        document.getElementById('editAreaId').value = id;
-                        document.getElementById('editAreaName').value = name;
-                        document.getElementById('editAreaLocation').value = location;
-                        new bootstrap.Modal(document.getElementById('editAreaModal')).show();
-                    }
-
-                    // Modal accessibility fixes
-                    document.addEventListener('DOMContentLoaded', function() {
-                        // Handle modal show events
-                        const modals = document.querySelectorAll('.modal');
-                        modals.forEach(modal => {
-                            modal.addEventListener('show.bs.modal', function() {
-                                // Remove aria-hidden when modal is shown
-                                this.removeAttribute('aria-hidden');
-                            });
-
-                            modal.addEventListener('shown.bs.modal', function() {
-                                // Focus management - focus first focusable element
-                                const focusableElements = this.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-                                if (focusableElements.length > 0) {
-                                    focusableElements[0].focus();
-                                }
-                            });
-
-                            modal.addEventListener('hide.bs.modal', function() {
-                                // Add aria-hidden when modal is hidden
-                                this.setAttribute('aria-hidden', 'true');
-                            });
-                        });
-                    });
-                </script>
-
             </div>
-        </div>
+        </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mobile sidebar
+        const sidebar = document.getElementById('adminSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('show');
+        });
+        overlay?.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+        });
+
+        // Edit area
+        function editArea(id, name, location) {
+            document.getElementById('editAreaId').value = id;
+            document.getElementById('editAreaName').value = name;
+            document.getElementById('editAreaLocation').value = location;
+            new bootstrap.Modal(document.getElementById('editAreaModal')).show();
+        }
+
+        // Search
+        document.getElementById('areaSearch')?.addEventListener('input', function () {
+            const q = this.value.toLowerCase();
+            document.querySelectorAll('#areasTable tbody tr[data-name]').forEach(row => {
+                const name = row.getAttribute('data-name') || '';
+                const loc = row.getAttribute('data-location') || '';
+                row.style.display = (!q || name.includes(q) || loc.includes(q)) ? '' : 'none';
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -4,10 +4,11 @@ require_once '../../controllers/AdminController.php';
 
 AdminController::dashboard(); // to get analytics + tickets
 
+// Extract globals into local scope
+$tickets = $GLOBALS['tickets'] ?? [];
+$analytics = $GLOBALS['analytics'] ?? [];
+
 // Gather data for charts
-$ticketsByStatus = ['active' => 0, 'completed' => 0];
-$ticketsByArea = [];
-if (!empty($tickets)) {
     foreach ($tickets as $ticket) {
         $status = $ticket['status'] ?? 'unknown';
         if (isset($ticketsByStatus[$status])) {

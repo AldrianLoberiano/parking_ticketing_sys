@@ -80,7 +80,7 @@ class Ticket
     public static function getAnalytics()
     {
         global $pdo;
-        $stmt = $pdo->query("SELECT COUNT(*) as total_tickets, COUNT(CASE WHEN status = 'active' THEN 1 END) as active_tickets, AVG(TIMESTAMPDIFF(SECOND, checkin_time, checkout_time)/3600) as avg_duration FROM tickets WHERE checkout_time IS NOT NULL");
+        $stmt = $pdo->query("SELECT COUNT(*) as total_tickets, COUNT(CASE WHEN status = 'active' THEN 1 END) as active_tickets, (SELECT AVG(TIMESTAMPDIFF(SECOND, checkin_time, checkout_time)/3600) FROM tickets WHERE checkout_time IS NOT NULL) as avg_duration FROM tickets");
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

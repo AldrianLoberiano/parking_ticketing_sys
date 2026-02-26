@@ -37,6 +37,9 @@ AdminController::manageAreas();
                     <a href="manage_users.php" class="sidebar-nav-link"><i class="fas fa-users"></i> Users</a>
                 </li>
                 <li class="sidebar-nav-item">
+                    <a href="manage_vehicles.php" class="sidebar-nav-link"><i class="fas fa-car"></i> Vehicles</a>
+                </li>
+                <li class="sidebar-nav-item">
                     <a href="manage_areas.php" class="sidebar-nav-link active"><i class="fas fa-map-marker-alt"></i> Areas</a>
                 </li>
                 <li class="sidebar-nav-item">

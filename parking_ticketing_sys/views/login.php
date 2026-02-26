@@ -27,6 +27,7 @@ $flash = getFlashMessage();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login — Parking Ticketing System</title>
+    <link rel="icon" type="image/png" href="/tecketing/parking_ticketing_sys/public/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -39,34 +40,12 @@ $flash = getFlashMessage();
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #0f172a;
+            background: #ffffff;
             position: relative;
             overflow: hidden;
         }
 
-        /* Animated background elements */
-        body::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(79,110,247,0.15) 0%, transparent 70%);
-            top: -100px;
-            right: -100px;
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%);
-            bottom: -80px;
-            left: -80px;
-            border-radius: 50%;
-            animation: float 10s ease-in-out infinite reverse;
+        /* Clean background — no gradient decorations */
         }
 
         @keyframes float {
@@ -88,21 +67,25 @@ $flash = getFlashMessage();
         }
 
         .login-brand-icon {
-            width: 64px;
-            height: 64px;
-            background: #4f6ef7;
+            width: 80px;
+            height: 80px;
             border-radius: 16px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            font-size: 1.6rem;
             margin-bottom: 1rem;
-            box-shadow: 0 8px 30px rgba(79,110,247,0.35);
+            overflow: hidden;
+        }
+
+        .login-brand-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
         }
 
         .login-brand h1 {
-            color: #fff;
+            color: #1a1d23;
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: -0.02em;
@@ -110,18 +93,18 @@ $flash = getFlashMessage();
         }
 
         .login-brand p {
-            color: rgba(255,255,255,0.5);
+            color: #6b7280;
             font-size: 0.85rem;
             margin: 0.35rem 0 0;
         }
 
         .login-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: #ffffff;
+            backdrop-filter: none;
+            border: 1px solid #e5e7eb;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
         .form-group {
@@ -130,7 +113,7 @@ $flash = getFlashMessage();
 
         .form-group label {
             display: block;
-            color: rgba(255,255,255,0.6);
+            color: #6b7280;
             font-size: 0.78rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -147,7 +130,7 @@ $flash = getFlashMessage();
             left: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(255,255,255,0.3);
+            color: #9ca3af;
             font-size: 0.9rem;
             transition: color 0.3s;
         }
@@ -155,23 +138,23 @@ $flash = getFlashMessage();
         .input-wrapper input {
             width: 100%;
             padding: 0.85rem 1rem 0.85rem 2.75rem;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: #f8f9fa;
+            border: 1px solid #e5e7eb;
             border-radius: 12px;
-            color: #fff;
+            color: #1a1d23;
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
         .input-wrapper input::placeholder {
-            color: rgba(255,255,255,0.25);
+            color: #9ca3af;
         }
 
         .input-wrapper input:focus {
             outline: none;
             border-color: #4f6ef7;
-            background: rgba(79,110,247,0.08);
+            background: #ffffff;
             box-shadow: 0 0 0 3px rgba(79,110,247,0.15);
         }
 
@@ -187,7 +170,7 @@ $flash = getFlashMessage();
             transform: translateY(-50%);
             background: none;
             border: none;
-            color: rgba(255,255,255,0.3);
+            color: #9ca3af;
             cursor: pointer;
             padding: 0;
             font-size: 0.9rem;
@@ -195,7 +178,7 @@ $flash = getFlashMessage();
         }
 
         .toggle-password:hover {
-            color: rgba(255,255,255,0.7);
+            color: #4f6ef7;
         }
 
         .btn-login {
@@ -239,14 +222,14 @@ $flash = getFlashMessage();
         }
 
         .login-alert.error {
-            background: rgba(239,68,68,0.15);
-            color: #fca5a5;
+            background: rgba(239,68,68,0.1);
+            color: #ef4444;
             border: 1px solid rgba(239,68,68,0.2);
         }
 
         .login-alert.success {
-            background: rgba(34,197,94,0.15);
-            color: #86efac;
+            background: rgba(34,197,94,0.1);
+            color: #22c55e;
             border: 1px solid rgba(34,197,94,0.2);
         }
 
@@ -258,12 +241,12 @@ $flash = getFlashMessage();
         .login-footer {
             text-align: center;
             margin-top: 1.5rem;
-            color: rgba(255,255,255,0.3);
+            color: #9ca3af;
             font-size: 0.75rem;
         }
 
         .login-footer i {
-            color: rgba(255,255,255,0.2);
+            color: #d1d5db;
         }
     </style>
 </head>
@@ -271,7 +254,7 @@ $flash = getFlashMessage();
 <body>
     <div class="login-container">
         <div class="login-brand">
-            <div class="login-brand-icon"><i class="fas fa-parking"></i></div>
+            <div class="login-brand-icon"><img src="/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Parking Logo"></div>
             <h1>Parking System</h1>
             <p>Sign in to your account</p>
         </div>

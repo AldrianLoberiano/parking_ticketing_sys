@@ -15,101 +15,106 @@ if (!isset($areas)) $areas = [];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Ticketing System - Admin</title>
+    <title>Slots — Parking Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/tecketing/parking_ticketing_sys/public/css/style.css" rel="stylesheet">
+    <link href="/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
 </head>
 
-<body>
-    <!-- Black Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.php">
-                <i class="fas fa-parking me-2"></i>Parking Admin
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="adminNavbar">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">
-                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage_users.php">
-                            <i class="fas fa-users me-1"></i>Users
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage_areas.php">
-                            <i class="fas fa-map-marker-alt me-1"></i>Areas
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="manage_slots.php">
-                            <i class="fas fa-parking me-1"></i>Slots
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="analytics.php">
-                            <i class="fas fa-chart-bar me-1"></i>Analytics
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user-shield me-1"></i><?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
-                            <li><a class="dropdown-item" href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout">
-                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
-                                </a></li>
-                        </ul>
-                    </li>
-                </ul>
+<body class="admin-body">
+    <div class="admin-wrapper">
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="sidebar-brand">
+                <div class="sidebar-brand-icon"><i class="fas fa-parking"></i></div>
+                <div class="sidebar-brand-text">ParkAdmin<small>Ticketing System</small></div>
             </div>
-        </div>
-    </nav>
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-label">Main</li>
+                <li class="sidebar-nav-item">
+                    <a href="dashboard.php" class="sidebar-nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                </li>
+                <li class="sidebar-nav-label">Management</li>
+                <li class="sidebar-nav-item">
+                    <a href="manage_users.php" class="sidebar-nav-link"><i class="fas fa-users"></i> Users</a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="manage_areas.php" class="sidebar-nav-link"><i class="fas fa-map-marker-alt"></i> Areas</a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="manage_slots.php" class="sidebar-nav-link active"><i class="fas fa-parking"></i> Slots</a>
+                </li>
+                <li class="sidebar-nav-label">Reports</li>
+                <li class="sidebar-nav-item">
+                    <a href="analytics.php" class="sidebar-nav-link"><i class="fas fa-chart-bar"></i> Analytics</a>
+                </li>
+                <li class="sidebar-nav-label">System</li>
+                <li class="sidebar-nav-item">
+                    <a href="backup.php" class="sidebar-nav-link"><i class="fas fa-database"></i> Backup & Recovery</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar"><?php echo strtoupper(substr($_SESSION['user_name'] ?? 'A', 0, 1)); ?></div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name"><?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?></div>
+                        <div class="sidebar-user-role">Administrator</div>
+                    </div>
+                    <a href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="sidebar-logout-btn" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
 
-    <div class="container-fluid p-4">
-        <div class="row">
-            <div class="col-12">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-                <!-- Welcome Card -->
-                <div class="card mb-2 bg-danger text-white">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <h5 class="card-title"><i class="fas fa-parking me-2"></i>Slot Management</h5>
-                                <p class="card-text">Configure parking slots effectively. Create, edit, and monitor slot availability across different areas for optimal parking management.</p>
-                            </div>
-                        </div>
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+                    <div class="topbar-title">
+                        <h1>Slot Management</h1>
+                        <p>Configure and monitor parking slots</p>
                     </div>
                 </div>
+                <div class="topbar-actions">
+                    <button class="btn-admin-primary" data-bs-toggle="modal" data-bs-target="#createSlotModal">
+                        <i class="fas fa-plus"></i> Add Slot
+                    </button>
+                </div>
+            </div>
 
+            <div class="admin-content">
                 <?php $flash = getFlashMessage();
                 if ($flash): ?>
-                    <div class="alert alert-<?php echo $flash['type'] == 'error' ? 'danger' : 'success'; ?> alert-dismissible fade show">
-                        <i class="fas fa-<?php echo $flash['type'] == 'error' ? 'exclamation-triangle' : 'check-circle'; ?> me-2"></i>
+                    <div class="admin-alert <?php echo $flash['type'] == 'error' ? 'error' : 'success'; ?>">
+                        <i class="fas fa-<?php echo $flash['type'] == 'error' ? 'exclamation-circle' : 'check-circle'; ?>"></i>
                         <?php echo htmlspecialchars($flash['message'], ENT_QUOTES, 'UTF-8'); ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 <?php endif; ?>
 
-                <div class="text-center mb-4">
-                    <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#createSlotModal">
-                        <i class="fas fa-plus me-2"></i>Add Slot
-                    </button>
+                <div class="section-header">
+                    <h2><i class="fas fa-parking"></i> All Slots (<?php echo count($slots); ?>)</h2>
+                    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="slotSearch" placeholder="Search slot number...">
+                        </div>
+                        <select class="filter-select" id="areaFilter">
+                            <option value="">All Areas</option>
+                            <?php foreach ($areas as $area): ?>
+                                <option value="<?php echo strtolower($area['name']); ?>"><?php echo htmlspecialchars($area['name']); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-body">
+                <div class="admin-card">
+                    <div class="admin-card-body" style="padding:0;">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="admin-table" id="slotsTable">
                                 <thead>
                                     <tr>
                                         <th>Area</th>
@@ -119,34 +124,34 @@ if (!isset($areas)) $areas = [];
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($slots as $slot): ?>
-                                        <tr>
-                                            <td><?php echo htmlspecialchars($slot['area_name']); ?></td>
-                                            <td><?php echo htmlspecialchars($slot['slot_number']); ?></td>
-                                            <td>
-                                                <?php
-                                                $status = isset($slot['status']) ? (string) $slot['status'] : '';
-                                                $allowedStatusClasses = [
-                                                    'available' => 'success',
-                                                    'occupied'  => 'warning',
-                                                ];
-                                                $statusClass = isset($allowedStatusClasses[$status]) ? $allowedStatusClasses[$status] : 'secondary';
-                                                $statusLabel = htmlspecialchars(ucfirst($status), ENT_QUOTES, 'UTF-8');
-                                                ?>
-                                                <span class="badge bg-<?php echo $statusClass; ?>">
-                                                    <?php echo $statusLabel; ?>
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <form method="post" style="display:inline;">
-                                                    <input type="hidden" name="id" value="<?php echo $slot['id']; ?>">
-                                                    <button type="submit" name="delete" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this slot?')">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                    <?php if (!empty($slots)): ?>
+                                        <?php foreach ($slots as $slot): ?>
+                                            <?php
+                                            $status = isset($slot['status']) ? (string) $slot['status'] : '';
+                                            $statusColors = ['available' => 'green', 'occupied' => 'amber'];
+                                            $statusColor = $statusColors[$status] ?? 'gray';
+                                            ?>
+                                            <tr data-area="<?php echo strtolower($slot['area_name']); ?>" data-slot="<?php echo strtolower($slot['slot_number']); ?>">
+                                                <td><strong><?php echo htmlspecialchars($slot['area_name']); ?></strong></td>
+                                                <td><?php echo htmlspecialchars($slot['slot_number']); ?></td>
+                                                <td>
+                                                    <span class="admin-badge <?php echo $statusColor; ?>">
+                                                        <?php echo htmlspecialchars(ucfirst($status), ENT_QUOTES, 'UTF-8'); ?>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <form method="post" style="display:inline;">
+                                                        <input type="hidden" name="id" value="<?php echo $slot['id']; ?>">
+                                                        <button type="submit" name="delete" class="btn-admin-sm btn-delete" onclick="return confirm('Delete this slot?')" title="Delete">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr><td colspan="4" class="text-center" style="padding:2rem;color:var(--text-muted);">No slots found. Add areas first, then create slots.</td></tr>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -158,7 +163,7 @@ if (!isset($areas)) $areas = [];
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Add New Slot</h5>
+                                <h5 class="modal-title"><i class="fas fa-plus-circle me-2"></i>Add New Slot</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <form method="post">
@@ -166,7 +171,7 @@ if (!isset($areas)) $areas = [];
                                     <div class="mb-3">
                                         <label for="area_id" class="form-label">Area</label>
                                         <select class="form-select" id="area_id" name="area_id" required>
-                                            <option value="">Select Area</option>
+                                            <option value="">Select an area</option>
                                             <?php foreach ($areas as $area): ?>
                                                 <option value="<?php echo $area['id']; ?>"><?php echo htmlspecialchars($area['name']); ?></option>
                                             <?php endforeach; ?>
@@ -174,49 +179,54 @@ if (!isset($areas)) $areas = [];
                                     </div>
                                     <div class="mb-3">
                                         <label for="slot_number" class="form-label">Slot Number</label>
-                                        <input type="text" name="slot_number" class="form-control" required>
+                                        <input type="text" name="slot_number" class="form-control" placeholder="e.g. A-01" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" name="create" class="btn btn-primary">Create Slot</button>
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" name="create" class="btn-admin-primary">Create Slot</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
-                <script>
-                    // Modal accessibility fixes
-                    document.addEventListener('DOMContentLoaded', function() {
-                        // Handle modal show events
-                        const modals = document.querySelectorAll('.modal');
-                        modals.forEach(modal => {
-                            modal.addEventListener('show.bs.modal', function() {
-                                // Remove aria-hidden when modal is shown
-                                this.removeAttribute('aria-hidden');
-                            });
-
-                            modal.addEventListener('shown.bs.modal', function() {
-                                // Focus management - focus first focusable element
-                                const focusableElements = this.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-                                if (focusableElements.length > 0) {
-                                    focusableElements[0].focus();
-                                }
-                            });
-
-                            modal.addEventListener('hide.bs.modal', function() {
-                                // Add aria-hidden when modal is hidden
-                                this.setAttribute('aria-hidden', 'true');
-                            });
-                        });
-                    });
-                </script>
-
             </div>
-        </div>
+        </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mobile sidebar
+        const sidebar = document.getElementById('adminSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('show');
+        });
+        overlay?.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+        });
+
+        // Search & Filter
+        const searchInput = document.getElementById('slotSearch');
+        const areaFilter = document.getElementById('areaFilter');
+
+        function filterSlots() {
+            const q = searchInput.value.toLowerCase();
+            const area = areaFilter.value.toLowerCase();
+            document.querySelectorAll('#slotsTable tbody tr[data-area]').forEach(row => {
+                const rowArea = row.getAttribute('data-area');
+                const rowSlot = row.getAttribute('data-slot');
+                const matchSearch = !q || rowSlot.includes(q);
+                const matchArea = !area || rowArea === area;
+                row.style.display = (matchSearch && matchArea) ? '' : 'none';
+            });
+        }
+
+        searchInput?.addEventListener('input', filterSlots);
+        areaFilter?.addEventListener('change', filterSlots);
+    </script>
 </body>
 
 </html>

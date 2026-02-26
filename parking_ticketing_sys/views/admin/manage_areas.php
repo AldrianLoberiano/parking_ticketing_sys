@@ -17,9 +17,10 @@ AdminController::manageAreas();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
+    <script>document.documentElement.className='sidebar-collapsed';var sc=localStorage.getItem('sidebarCollapsed');if(sc==='false'){document.documentElement.className='';}else{document.documentElement.className='sidebar-collapsed';}</script>
 </head>
 
-<body class="admin-body">
+<body class="admin-body" id="adminBody">
     <div class="admin-wrapper">
 
         <!-- Sidebar -->
@@ -31,28 +32,24 @@ AdminController::manageAreas();
             <ul class="sidebar-nav">
                 <li class="sidebar-nav-label">Main</li>
                 <li class="sidebar-nav-item">
-                    <a href="dashboard.php" class="sidebar-nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                    <a href="dashboard.php" class="sidebar-nav-link" data-title="Dashboard"><i class="fas fa-th-large"></i> Dashboard</a>
                 </li>
                 <li class="sidebar-nav-label">Management</li>
                 <li class="sidebar-nav-item">
-                    <a href="manage_users.php" class="sidebar-nav-link"><i class="fas fa-users"></i> Users</a>
+                    <a href="manage_users.php" class="sidebar-nav-link" data-title="Users"><i class="fas fa-users"></i> Users</a>
                 </li>
                 <li class="sidebar-nav-item">
-                    <a href="manage_vehicles.php" class="sidebar-nav-link"><i class="fas fa-car"></i> Vehicles</a>
+                    <a href="manage_vehicles.php" class="sidebar-nav-link" data-title="Vehicles"><i class="fas fa-car"></i> Vehicles</a>
                 </li>
                 <li class="sidebar-nav-item">
-                    <a href="manage_areas.php" class="sidebar-nav-link active"><i class="fas fa-map-marker-alt"></i> Areas</a>
+                    <a href="manage_areas.php" class="sidebar-nav-link active" data-title="Areas"><i class="fas fa-map-marker-alt"></i> Areas</a>
                 </li>
                 <li class="sidebar-nav-item">
-                    <a href="manage_slots.php" class="sidebar-nav-link"><i class="fas fa-parking"></i> Slots</a>
-                </li>
-                <li class="sidebar-nav-label">Reports</li>
-                <li class="sidebar-nav-item">
-                    <a href="analytics.php" class="sidebar-nav-link"><i class="fas fa-chart-bar"></i> Analytics</a>
+                    <a href="manage_slots.php" class="sidebar-nav-link" data-title="Slots"><i class="fas fa-parking"></i> Slots</a>
                 </li>
                 <li class="sidebar-nav-label">System</li>
                 <li class="sidebar-nav-item">
-                    <a href="backup.php" class="sidebar-nav-link"><i class="fas fa-database"></i> Backup & Recovery</a>
+                    <a href="backup.php" class="sidebar-nav-link" data-title="Backup & Recovery"><i class="fas fa-database"></i> Backup & Recovery</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -207,12 +204,15 @@ AdminController::manageAreas();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Mobile sidebar
+        // Sidebar toggle
         const sidebar = document.getElementById('adminSidebar');
         const overlay = document.getElementById('sidebarOverlay');
+        const body = document.body;
+        (function(){const s=localStorage.getItem('sidebarCollapsed');if(s==='false'){body.classList.remove('sidebar-collapsed');}else{body.classList.add('sidebar-collapsed');}})();
         document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
-            sidebar.classList.toggle('show');
-            overlay.classList.toggle('show');
+            const isMobile = window.innerWidth <= 991;
+            if (isMobile) { sidebar.classList.toggle('show'); overlay.classList.toggle('show'); }
+            else { body.classList.toggle('sidebar-collapsed'); localStorage.setItem('sidebarCollapsed', body.classList.contains('sidebar-collapsed')); }
         });
         overlay?.addEventListener('click', () => {
             sidebar.classList.remove('show');

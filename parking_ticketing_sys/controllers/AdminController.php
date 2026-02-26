@@ -94,4 +94,26 @@ class AdminController
         $areas = ParkingArea::getAll();
         $slots = ParkingSlot::getAll();
     }
+
+    public static function manageVehicles()
+    {
+        requireRole('admin');
+        global $vehicles;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['update'])) {
+                $id = $_POST['id'];
+                $plate = sanitize($_POST['plate_number']);
+                $model = sanitize($_POST['model']);
+                $color = sanitize($_POST['color']);
+                Vehicle::update($id, $plate, $model, $color);
+                flashMessage('success', 'Vehicle updated');
+            } elseif (isset($_POST['delete'])) {
+                $id = $_POST['id'];
+                Vehicle::delete($id);
+                flashMessage('success', 'Vehicle deleted');
+            }
+            redirect('manage_vehicles.php');
+        }
+        $vehicles = Vehicle::getAll();
+    }
 }

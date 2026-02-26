@@ -13,6 +13,7 @@ EmployeeController::dashboard();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard — Employee</title>
+    <link rel="icon" type="image/png" href="/tecketing/parking_ticketing_sys/public/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
@@ -24,7 +25,7 @@ EmployeeController::dashboard();
         <!-- Sidebar -->
         <aside class="admin-sidebar" id="adminSidebar">
             <div class="sidebar-brand">
-                <div class="sidebar-brand-icon" style="background:#22c55e;"><i class="fas fa-car"></i></div>
+                <div class="sidebar-brand-icon"><img src="/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Logo"></div>
                 <div class="sidebar-brand-text">ParkPortal<small>Employee Panel</small></div>
             </div>
             <ul class="sidebar-nav">

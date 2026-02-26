@@ -30,7 +30,21 @@ class EmployeeController
             $color = sanitize($_POST['color']);
             $user = getCurrentUser();
 
-            if (Vehicle::create($plate, $user['id'], $model, $color)) {
+            // Handle image upload
+            $imagePath = null;
+            if (isset($_FILES['plate_image']) && $_FILES['plate_image']['error'] === UPLOAD_ERR_OK) {
+                $uploadDir = __DIR__ . '/../public/uploads/';
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
+                $ext = pathinfo($_FILES['plate_image']['name'], PATHINFO_EXTENSION);
+                $filename = 'plate_' . time() . '_' . uniqid() . '.' . $ext;
+                if (move_uploaded_file($_FILES['plate_image']['tmp_name'], $uploadDir . $filename)) {
+                    $imagePath = $filename;
+                }
+            }
+
+            if (Vehicle::create($plate, $user['id'], $model, $color, $imagePath)) {
                 flashMessage('success', 'Vehicle registered');
             } else {
                 flashMessage('error', 'Registration failed');

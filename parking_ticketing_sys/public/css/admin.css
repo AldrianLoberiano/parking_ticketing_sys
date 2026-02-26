@@ -5,8 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --sidebar-bg: #1a1d23;
-    --sidebar-hover: #2a2d35;
+    --sidebar-bg: #1e293b;
+    --sidebar-hover: #334155;
     --sidebar-active: #4f6ef7;
     --topbar-bg: #ffffff;
     --body-bg: #ffffff;
@@ -50,6 +50,7 @@ body.admin-body {
 .admin-sidebar {
     width: 260px;
     background: var(--sidebar-bg);
+    border-right: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -66,13 +67,13 @@ body.admin-body {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-brand-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--accent-blue);
+    width: 50px;
+    height: 50px;
+    background: transparent;
     border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
@@ -86,12 +87,12 @@ body.admin-body {
 .sidebar-brand-icon img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: var(--radius-sm);
+    object-fit: contain;
+    border-radius: 0;
 }
 
 .sidebar-brand-text {
-    color: #fff;
+    color: #ffffff;
     font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -101,7 +102,7 @@ body.admin-body {
     display: block;
     font-size: 0.7rem;
     font-weight: 400;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.4);
     letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-top: 2px;
@@ -119,7 +120,7 @@ body.admin-body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.35);
     padding: 0.75rem 0.75rem 0.5rem;
     margin-top: 0.5rem;
 }
@@ -133,7 +134,7 @@ body.admin-body {
     align-items: center;
     gap: 0.75rem;
     padding: 0.7rem 0.75rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.65);
     text-decoration: none;
     border-radius: var(--radius-sm);
     transition: var(--transition);
@@ -143,7 +144,7 @@ body.admin-body {
 }
 
 .sidebar-nav-link:hover {
-    color: #fff;
+    color: #ffffff;
     background: var(--sidebar-hover);
     text-decoration: none;
 }
@@ -151,7 +152,7 @@ body.admin-body {
 .sidebar-nav-link.active {
     color: #fff;
     background: var(--accent-blue);
-    box-shadow: 0 4px 12px rgba(79, 110, 247, 0.4);
+    box-shadow: none;
 }
 
 .sidebar-nav-link i {
@@ -163,7 +164,7 @@ body.admin-body {
 
 .sidebar-footer {
     padding: 1rem 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-user {
@@ -193,7 +194,7 @@ body.admin-body {
 }
 
 .sidebar-user-name {
-    color: #fff;
+    color: #ffffff;
     font-size: 0.85rem;
     font-weight: 600;
     white-space: nowrap;
@@ -210,7 +211,7 @@ body.admin-body {
 
 .sidebar-logout-btn {
     background: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.5);
     width: 32px;
     height: 32px;
@@ -291,7 +292,7 @@ body.admin-body {
 }
 
 .mobile-menu-btn {
-    display: none;
+    display: flex;
     background: none;
     border: 1px solid var(--border-color);
     color: var(--text-primary);

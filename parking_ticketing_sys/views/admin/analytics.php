@@ -46,9 +46,10 @@ if (!empty($tickets)) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script>document.documentElement.className='sidebar-collapsed';var sc=localStorage.getItem('sidebarCollapsed');if(sc==='false'){document.documentElement.className='';}else{document.documentElement.className='sidebar-collapsed';}</script>
 </head>
 
-<body class="admin-body">
+<body class="admin-body" id="adminBody">
     <div class="admin-wrapper">
 
         <!-- Sidebar -->
@@ -60,28 +61,28 @@ if (!empty($tickets)) {
             <ul class="sidebar-nav">
                 <li class="sidebar-nav-label">Main</li>
                 <li class="sidebar-nav-item">
-                    <a href="dashboard.php" class="sidebar-nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                    <a href="dashboard.php" class="sidebar-nav-link" data-title="Dashboard"><i class="fas fa-th-large"></i> Dashboard</a>
                 </li>
                 <li class="sidebar-nav-label">Management</li>
                 <li class="sidebar-nav-item">
-                    <a href="manage_users.php" class="sidebar-nav-link"><i class="fas fa-users"></i> Users</a>
+                    <a href="manage_users.php" class="sidebar-nav-link" data-title="Users"><i class="fas fa-users"></i> Users</a>
                 </li>
                 <li class="sidebar-nav-item">
-                    <a href="manage_vehicles.php" class="sidebar-nav-link"><i class="fas fa-car"></i> Vehicles</a>
+                    <a href="manage_vehicles.php" class="sidebar-nav-link" data-title="Vehicles"><i class="fas fa-car"></i> Vehicles</a>
                 </li>
                 <li class="sidebar-nav-item">
-                    <a href="manage_areas.php" class="sidebar-nav-link"><i class="fas fa-map-marker-alt"></i> Areas</a>
+                    <a href="manage_areas.php" class="sidebar-nav-link" data-title="Areas"><i class="fas fa-map-marker-alt"></i> Areas</a>
                 </li>
                 <li class="sidebar-nav-item">
-                    <a href="manage_slots.php" class="sidebar-nav-link"><i class="fas fa-parking"></i> Slots</a>
+                    <a href="manage_slots.php" class="sidebar-nav-link" data-title="Slots"><i class="fas fa-parking"></i> Slots</a>
                 </li>
                 <li class="sidebar-nav-label">Reports</li>
                 <li class="sidebar-nav-item">
-                    <a href="analytics.php" class="sidebar-nav-link active"><i class="fas fa-chart-bar"></i> Analytics</a>
+                    <a href="analytics.php" class="sidebar-nav-link active" data-title="Analytics"><i class="fas fa-chart-bar"></i> Analytics</a>
                 </li>
                 <li class="sidebar-nav-label">System</li>
                 <li class="sidebar-nav-item">
-                    <a href="backup.php" class="sidebar-nav-link"><i class="fas fa-database"></i> Backup & Recovery</a>
+                    <a href="backup.php" class="sidebar-nav-link" data-title="Backup & Recovery"><i class="fas fa-database"></i> Backup & Recovery</a>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -214,10 +215,16 @@ if (!empty($tickets)) {
     <script>
         document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
 
-        // Mobile sidebar
+        // Sidebar toggle
         const sidebar = document.getElementById('adminSidebar');
         const overlay = document.getElementById('sidebarOverlay');
-        document.getElementById('mobileMenuBtn')?.addEventListener('click', () => { sidebar.classList.toggle('show'); overlay.classList.toggle('show'); });
+        const body = document.body;
+        (function(){const s=localStorage.getItem('sidebarCollapsed');if(s==='false'){body.classList.remove('sidebar-collapsed');}else{body.classList.add('sidebar-collapsed');}})();
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+            const isMobile = window.innerWidth <= 991;
+            if (isMobile) { sidebar.classList.toggle('show'); overlay.classList.toggle('show'); }
+            else { body.classList.toggle('sidebar-collapsed'); localStorage.setItem('sidebarCollapsed', body.classList.contains('sidebar-collapsed')); }
+        });
         overlay?.addEventListener('click', () => { sidebar.classList.remove('show'); overlay.classList.remove('show'); });
 
         // Search & Filter

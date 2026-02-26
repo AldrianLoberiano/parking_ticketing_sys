@@ -15,7 +15,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark login-navbar">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fas fa-parking me-2"></i>Parking System
+                <img src="/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Parking System Logo" style="height:40px; width:auto; margin-right:8px; vertical-align:middle;">
+                Parking System
             </a>
             <div class="navbar-nav ms-auto">
                 <?php if (isLoggedIn()): ?>

@@ -11,6 +11,7 @@ $analytics = $GLOBALS['analytics'] ?? [];
 // Gather data for charts
 $ticketsByStatus = ['active' => 0, 'completed' => 0];
 $ticketsByArea = [];
+$scatterData = [];
 if (!empty($tickets)) {
     foreach ($tickets as $ticket) {
         $status = $ticket['status'] ?? 'unknown';
@@ -22,6 +23,13 @@ if (!empty($tickets)) {
             $ticketsByArea[$area] = 0;
         }
         $ticketsByArea[$area]++;
+        // Scatter plot data: check-in hour vs duration (hours)
+        if (!empty($ticket['checkout_time']) && !empty($ticket['checkin_time'])) {
+            $cin = new DateTime($ticket['checkin_time']);
+            $cout = new DateTime($ticket['checkout_time']);
+            $hours = $cin->diff($cout)->h + ($cin->diff($cout)->days * 24) + ($cin->diff($cout)->i / 60);
+            $scatterData[] = ['x' => (int)$cin->format('H') + (int)$cin->format('i')/60, 'y' => round($hours, 1)];
+        }
     }
 }
 ?>
@@ -33,6 +41,7 @@ if (!empty($tickets)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytics — Parking Admin</title>
+    <link rel="icon" type="image/png" href="/tecketing/parking_ticketing_sys/public/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
@@ -45,7 +54,7 @@ if (!empty($tickets)) {
         <!-- Sidebar -->
         <aside class="admin-sidebar" id="adminSidebar">
             <div class="sidebar-brand">
-                <div class="sidebar-brand-icon"><i class="fas fa-parking"></i></div>
+                <div class="sidebar-brand-icon"><img src="/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Logo"></div>
                 <div class="sidebar-brand-text">ParkAdmin<small>Ticketing System</small></div>
             </div>
             <ul class="sidebar-nav">
@@ -134,12 +143,12 @@ if (!empty($tickets)) {
                 <!-- Charts Row -->
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem;">
                     <div class="chart-container">
-                        <h3><i class="fas fa-chart-bar me-2" style="color:var(--accent-blue);"></i>Tickets by Status</h3>
-                        <canvas id="statusChart" height="220"></canvas>
+                        <h3><i class="fas fa-chart-pie me-2" style="color:var(--accent-blue);"></i>Tickets by Status</h3>
+                        <canvas id="statusChart" height="260"></canvas>
                     </div>
                     <div class="chart-container">
-                        <h3><i class="fas fa-chart-bar me-2" style="color:var(--accent-green);"></i>Tickets by Area</h3>
-                        <canvas id="areaChart" height="220"></canvas>
+                        <h3><i class="fas fa-braille me-2" style="color:var(--accent-green);"></i>Check-in Time vs Duration</h3>
+                        <canvas id="scatterChart" height="260"></canvas>
                     </div>
                 </div>
 
@@ -239,50 +248,61 @@ if (!empty($tickets)) {
             cyan: '#06b6d4'
         };
 
-        // Status Chart
+        // Pie Chart — Tickets by Status
         new Chart(document.getElementById('statusChart'), {
-            type: 'bar',
+            type: 'pie',
             data: {
                 labels: ['Active', 'Completed'],
                 datasets: [{
-                    label: 'Tickets',
                     data: [<?php echo $ticketsByStatus['active']; ?>, <?php echo $ticketsByStatus['completed']; ?>],
                     backgroundColor: [chartColors.amber, chartColors.green],
-                    borderRadius: 6,
-                    barThickness: 40
+                    borderWidth: 2,
+                    borderColor: '#fff'
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#f0f0f0' } },
-                    x: { grid: { display: false } }
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 16, usePointStyle: true, pointStyle: 'circle', font: { size: 12, family: 'Inter' } }
+                    }
                 }
             }
         });
 
-        // Area Chart
-        new Chart(document.getElementById('areaChart'), {
-            type: 'bar',
+        // Scatter Plot — Check-in Hour vs Duration
+        new Chart(document.getElementById('scatterChart'), {
+            type: 'scatter',
             data: {
-                labels: <?php echo json_encode(array_keys($ticketsByArea)); ?>,
                 datasets: [{
-                    label: 'Tickets',
-                    data: <?php echo json_encode(array_values($ticketsByArea)); ?>,
-                    backgroundColor: [chartColors.blue, chartColors.green, chartColors.amber, chartColors.purple, chartColors.cyan, chartColors.red],
-                    borderRadius: 6,
-                    barThickness: 40
+                    label: 'Completed Tickets',
+                    data: <?php echo json_encode($scatterData); ?>,
+                    backgroundColor: chartColors.blue,
+                    borderColor: chartColors.blue,
+                    pointRadius: 7,
+                    pointHoverRadius: 10
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
+                plugins: {
+                    legend: { display: false }
+                },
                 scales: {
-                    y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#f0f0f0' } },
-                    x: { grid: { display: false } }
+                    x: {
+                        title: { display: true, text: 'Check-in Hour', font: { size: 12, family: 'Inter' } },
+                        min: 0, max: 24,
+                        ticks: { stepSize: 2 },
+                        grid: { color: '#f0f0f0' }
+                    },
+                    y: {
+                        title: { display: true, text: 'Duration (hours)', font: { size: 12, family: 'Inter' } },
+                        beginAtZero: true,
+                        grid: { color: '#f0f0f0' }
+                    }
                 }
             }
         });

@@ -86,7 +86,7 @@ if (is_dir($backupDir)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Backup & Recovery — Parking Admin</title>
+    <title>Backup & Recovery — ParkEase</title>
     <link rel="icon" type="image/png" href="/tecketing/parking_ticketing_sys/public/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -100,7 +100,7 @@ if (is_dir($backupDir)) {
         <aside class="admin-sidebar" id="adminSidebar">
             <div class="sidebar-brand">
                 <div class="sidebar-brand-icon"><img src="/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Logo"></div>
-                <div class="sidebar-brand-text">ParkAdmin<small>Ticketing System</small></div>
+                <div class="sidebar-brand-text">ParkEase<small>Parking Control and Monitoring</small></div>
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-nav-label">Main</li>

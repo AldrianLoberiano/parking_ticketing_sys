@@ -12,179 +12,176 @@ AdminController::dashboard();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Ticketing System - Admin</title>
+    <title>Dashboard — Parking Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/tecketing/parking_ticketing_sys/public/css/style.css" rel="stylesheet">
+    <link href="/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
 </head>
 
-<body>
-    <!-- Black Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.php">
-                <i class="fas fa-parking me-2"></i>Parking Admin
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="adminNavbar">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.php">
-                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage_users.php">
-                            <i class="fas fa-users me-1"></i>Users
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage_areas.php">
-                            <i class="fas fa-map-marker-alt me-1"></i>Areas
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage_slots.php">
-                            <i class="fas fa-parking me-1"></i>Slots
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="analytics.php">
-                            <i class="fas fa-chart-bar me-1"></i>Analytics
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user-shield me-1"></i><?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
-                            <li><a class="dropdown-item" href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout">
-                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
-                                </a></li>
-                        </ul>
-                    </li>
-                </ul>
+<body class="admin-body">
+    <div class="admin-wrapper">
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="sidebar-brand">
+                <div class="sidebar-brand-icon"><i class="fas fa-parking"></i></div>
+                <div class="sidebar-brand-text">ParkAdmin<small>Ticketing System</small></div>
             </div>
-        </div>
-    </nav>
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-label">Main</li>
+                <li class="sidebar-nav-item">
+                    <a href="dashboard.php" class="sidebar-nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
+                </li>
+                <li class="sidebar-nav-label">Management</li>
+                <li class="sidebar-nav-item">
+                    <a href="manage_users.php" class="sidebar-nav-link"><i class="fas fa-users"></i> Users</a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="manage_areas.php" class="sidebar-nav-link"><i class="fas fa-map-marker-alt"></i> Areas</a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="manage_slots.php" class="sidebar-nav-link"><i class="fas fa-parking"></i> Slots</a>
+                </li>
+                <li class="sidebar-nav-label">Reports</li>
+                <li class="sidebar-nav-item">
+                    <a href="analytics.php" class="sidebar-nav-link"><i class="fas fa-chart-bar"></i> Analytics</a>
+                </li>
+                <li class="sidebar-nav-label">System</li>
+                <li class="sidebar-nav-item">
+                    <a href="backup.php" class="sidebar-nav-link"><i class="fas fa-database"></i> Backup & Recovery</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar"><?php echo strtoupper(substr($_SESSION['user_name'] ?? 'A', 0, 1)); ?></div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name"><?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?></div>
+                        <div class="sidebar-user-role">Administrator</div>
+                    </div>
+                    <a href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="sidebar-logout-btn" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
 
-    <div class="container-fluid p-4">
-        <div class="row">
-            <div class="col-12">
+        <!-- Overlay for mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-                <!-- Welcome Card -->
-                <div class="card mb-2 bg-primary text-white">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <h5 class="card-title"><i class="fas fa-tachometer-alt me-2"></i>Dashboard Overview</h5>
-                                <p class="card-text">Get a comprehensive view of your parking system. Monitor key metrics, user activity, and system performance at a glance.</p>
-                            </div>
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+                    <div class="topbar-title">
+                        <h1>Dashboard</h1>
+                        <p>Welcome back, <?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?></p>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <span class="topbar-date"><i class="far fa-calendar-alt"></i> <span id="currentDate"></span></span>
+                </div>
+            </div>
+
+            <div class="admin-content">
+                <!-- Stats -->
+                <div class="stats-row">
+                    <div class="stat-card blue">
+                        <div class="stat-card-icon blue"><i class="fas fa-users"></i></div>
+                        <div class="stat-card-info">
+                            <h3><?php echo count($users); ?></h3>
+                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="stat-card-icon green"><i class="fas fa-car"></i></div>
+                        <div class="stat-card-info">
+                            <h3><?php echo count($vehicles); ?></h3>
+                            <p>Registered Vehicles</p>
+                        </div>
+                    </div>
+                    <div class="stat-card cyan">
+                        <div class="stat-card-icon cyan"><i class="fas fa-parking"></i></div>
+                        <div class="stat-card-info">
+                            <h3><?php echo count($slots); ?></h3>
+                            <p>Total Slots</p>
+                        </div>
+                    </div>
+                    <div class="stat-card amber">
+                        <div class="stat-card-icon amber"><i class="fas fa-ticket-alt"></i></div>
+                        <div class="stat-card-info">
+                            <h3><?php echo $analytics['active_tickets'] ?? 0; ?></h3>
+                            <p>Active Tickets</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Stats Cards -->
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <div class="card h-100 border-left-primary">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-grow-1">
-                                        <h5 class="card-title text-primary"><i class="fas fa-users me-2"></i>Total Users</h5>
-                                        <h2 class="mb-0"><?php echo count($users); ?></h2>
-                                    </div>
-                                    <div class="text-primary">
-                                        <i class="fas fa-users fa-2x"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card h-100 border-left-success">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-grow-1">
-                                        <h5 class="card-title text-success"><i class="fas fa-car me-2"></i>Total Vehicles</h5>
-                                        <h2 class="mb-0"><?php echo count($vehicles); ?></h2>
-                                    </div>
-                                    <div class="text-success">
-                                        <i class="fas fa-car fa-2x"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card h-100 border-left-info">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-grow-1">
-                                        <h5 class="card-title text-info"><i class="fas fa-parking me-2"></i>Total Slots</h5>
-                                        <h2 class="mb-0"><?php echo count($slots); ?></h2>
-                                    </div>
-                                    <div class="text-info">
-                                        <i class="fas fa-parking fa-2x"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card h-100 border-left-warning">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-grow-1">
-                                        <h5 class="card-title text-warning"><i class="fas fa-ticket-alt me-2"></i>Active Tickets</h5>
-                                        <h2 class="mb-0"><?php echo $analytics['active_tickets'] ?? 0; ?></h2>
-                                    </div>
-                                    <div class="text-warning">
-                                        <i class="fas fa-ticket-alt fa-2x"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quick Actions -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h5><i class="fas fa-bolt me-2"></i>Quick Actions</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-3 mb-3">
-                                    <a href="manage_users.php" class="btn btn-primary btn-lg w-100">
-                                        <i class="fas fa-users me-2"></i>Manage Users
-                                    </a>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <a href="manage_areas.php" class="btn btn-success btn-lg w-100">
-                                        <i class="fas fa-map-marker-alt me-2"></i>Manage Areas
-                                    </a>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <a href="manage_slots.php" class="btn btn-info btn-lg w-100">
-                                        <i class="fas fa-parking me-2"></i>Manage Slots
-                                    </a>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <a href="analytics.php" class="btn btn-warning btn-lg w-100">
-                                        <i class="fas fa-chart-bar me-2"></i>View Analytics
-                                    </a>
-                                </div>
-                            </div>
+                <!-- Recent Activity -->
+                <div class="section-header">
+                    <h2><i class="fas fa-history"></i> Recent Tickets</h2>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-body" style="padding:0;">
+                        <div class="table-responsive">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Plate Number</th>
+                                        <th>Owner</th>
+                                        <th>Slot</th>
+                                        <th>Check-in</th>
+                                        <th>Check-out</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if (!empty($tickets)): ?>
+                                        <?php foreach (array_slice($tickets, 0, 10) as $ticket): ?>
+                                            <tr>
+                                                <td><strong><?php echo htmlspecialchars($ticket['plate_number']); ?></strong></td>
+                                                <td><?php echo htmlspecialchars($ticket['owner_name']); ?></td>
+                                                <td><?php echo htmlspecialchars($ticket['area_name'] . ' — ' . $ticket['slot_number']); ?></td>
+                                                <td><?php echo htmlspecialchars($ticket['checkin_time']); ?></td>
+                                                <td><?php echo htmlspecialchars($ticket['checkout_time'] ?: '—'); ?></td>
+                                                <td>
+                                                    <span class="admin-badge <?php echo $ticket['status'] == 'active' ? 'amber' : 'green'; ?>">
+                                                        <?php echo ucfirst($ticket['status']); ?>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr><td colspan="6" class="text-center" style="padding:2rem;color:var(--text-muted);">No tickets yet</td></tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </main>
+    </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Date display
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+
+        // Mobile sidebar toggle
+        const sidebar = document.getElementById('adminSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const menuBtn = document.getElementById('mobileMenuBtn');
+
+        menuBtn?.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('show');
+        });
+
+        overlay?.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+        });
+    </script>
 </body>
 
 </html>

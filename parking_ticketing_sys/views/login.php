@@ -26,7 +26,7 @@ $flash = getFlashMessage();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login — Parking Ticketing System</title>
+    <title>Login — ParkEase</title>
     <link rel="icon" type="image/png" href="/tecketing/parking_ticketing_sys/public/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -255,7 +255,7 @@ $flash = getFlashMessage();
     <div class="login-container">
         <div class="login-brand">
             <div class="login-brand-icon"><img src="/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Parking Logo"></div>
-            <h1>Parking System</h1>
+            <h1>ParkEase</h1>
             <p>Sign in to your account</p>
         </div>
 

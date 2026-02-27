@@ -32,7 +32,11 @@ $flash = getFlashMessage();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -46,11 +50,17 @@ $flash = getFlashMessage();
         }
 
         /* Clean background — no gradient decorations */
-        }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, -30px); }
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, -30px);
+            }
         }
 
         .login-container {
@@ -104,7 +114,7 @@ $flash = getFlashMessage();
             border: 1px solid #e5e7eb;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .form-group {
@@ -155,11 +165,11 @@ $flash = getFlashMessage();
             outline: none;
             border-color: #4f6ef7;
             background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(79,110,247,0.15);
+            box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.15);
         }
 
-        .input-wrapper input:focus + i.input-icon,
-        .input-wrapper input:focus ~ i.input-icon {
+        .input-wrapper input:focus+i.input-icon,
+        .input-wrapper input:focus~i.input-icon {
             color: #4f6ef7;
         }
 
@@ -202,7 +212,7 @@ $flash = getFlashMessage();
 
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(79,110,247,0.4);
+            box-shadow: 0 8px 25px rgba(79, 110, 247, 0.4);
         }
 
         .btn-login:active {
@@ -222,20 +232,27 @@ $flash = getFlashMessage();
         }
 
         .login-alert.error {
-            background: rgba(239,68,68,0.1);
+            background: rgba(239, 68, 68, 0.1);
             color: #ef4444;
-            border: 1px solid rgba(239,68,68,0.2);
+            border: 1px solid rgba(239, 68, 68, 0.2);
         }
 
         .login-alert.success {
-            background: rgba(34,197,94,0.1);
+            background: rgba(34, 197, 94, 0.1);
             color: #22c55e;
-            border: 1px solid rgba(34,197,94,0.2);
+            border: 1px solid rgba(34, 197, 94, 0.2);
         }
 
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .login-footer {

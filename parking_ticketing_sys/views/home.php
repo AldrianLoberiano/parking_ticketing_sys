@@ -24,14 +24,20 @@ if (isLoggedIn()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParkAdmin — Parking Control and Monitoring System</title>
+    <title>ParkEase — Parking Control and Monitoring System</title>
     <meta name="description" content="Modern parking ticketing and management system. Streamline operations with real-time monitoring and automated ticketing.">
     <link rel="icon" type="image/png" href="/tecketing/parking_ticketing_sys/public/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         :root {
             --ink: #0f172a;
@@ -45,22 +51,22 @@ if (isLoggedIn()) {
             --border-light: #f1f5f9;
             --accent: #2563eb;
             --accent-hover: #1d4ed8;
-            --accent-light: rgba(37,99,235,0.08);
+            --accent-light: rgba(37, 99, 235, 0.08);
             --emerald: #059669;
-            --emerald-light: rgba(5,150,105,0.08);
+            --emerald-light: rgba(5, 150, 105, 0.08);
             --orange: #ea580c;
-            --orange-light: rgba(234,88,12,0.08);
+            --orange-light: rgba(234, 88, 12, 0.08);
             --violet: #7c3aed;
-            --violet-light: rgba(124,58,237,0.08);
+            --violet-light: rgba(124, 58, 237, 0.08);
             --rose: #e11d48;
-            --rose-light: rgba(225,29,72,0.08);
+            --rose-light: rgba(225, 29, 72, 0.08);
             --sky: #0284c7;
-            --sky-light: rgba(2,132,199,0.08);
+            --sky-light: rgba(2, 132, 199, 0.08);
             --radius: 14px;
             --radius-sm: 10px;
-            --shadow-sm: 0 1px 3px rgba(15,23,42,0.04);
-            --shadow-md: 0 4px 24px rgba(15,23,42,0.07);
-            --shadow-lg: 0 12px 48px rgba(15,23,42,0.1);
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 4px 24px rgba(15, 23, 42, 0.07);
+            --shadow-lg: 0 12px 48px rgba(15, 23, 42, 0.1);
         }
 
         body {
@@ -83,7 +89,7 @@ if (isLoggedIn()) {
         }
 
         .hp-nav.scrolled {
-            background: rgba(255,255,255,0.92);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px) saturate(180%);
             -webkit-backdrop-filter: blur(16px) saturate(180%);
             box-shadow: 0 1px 0 var(--border);
@@ -151,7 +157,9 @@ if (isLoggedIn()) {
             letter-spacing: -0.01em;
         }
 
-        .hp-nav-links a:hover { color: var(--ink); }
+        .hp-nav-links a:hover {
+            color: var(--ink);
+        }
 
         .btn-nav-signin {
             display: inline-flex;
@@ -169,7 +177,10 @@ if (isLoggedIn()) {
             letter-spacing: -0.01em;
         }
 
-        .btn-nav-signin:hover { background: var(--ink-light); color: #fff; }
+        .btn-nav-signin:hover {
+            background: var(--ink-light);
+            color: #fff;
+        }
 
         /* ===== HERO ===== */
         .hp-hero {
@@ -196,7 +207,7 @@ if (isLoggedIn()) {
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 55% 60% at 30% 50%, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.3) 100%);
+            background: radial-gradient(ellipse 55% 60% at 30% 50%, rgba(255, 255, 255, 0.0) 0%, rgba(255, 255, 255, 0.3) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -219,7 +230,7 @@ if (isLoggedIn()) {
             gap: 0.45rem;
             background: var(--accent-light);
             color: var(--accent);
-            border: 1px solid rgba(37,99,235,0.15);
+            border: 1px solid rgba(37, 99, 235, 0.15);
             padding: 0.4rem 0.95rem;
             border-radius: 50px;
             font-size: 0.72rem;
@@ -229,7 +240,9 @@ if (isLoggedIn()) {
             margin-bottom: 1.75rem;
         }
 
-        .hero-tag i { font-size: 0.65rem; }
+        .hero-tag i {
+            font-size: 0.65rem;
+        }
 
         .hp-hero h1 {
             font-size: 3.5rem;
@@ -242,11 +255,7 @@ if (isLoggedIn()) {
 
         .hp-hero h1 .accent-word {
             color: #0284c7;
-            text-decoration: underline;
-            text-decoration-style: wavy;
-            text-decoration-color: #38bdf8;
-            text-decoration-thickness: 3px;
-            text-underline-offset: 8px;
+            text-decoration: none;
         }
 
         .hero-desc {
@@ -280,7 +289,11 @@ if (isLoggedIn()) {
             letter-spacing: -0.01em;
         }
 
-        .btn-primary-hero:hover { background: var(--accent-hover); color: #fff; box-shadow: 0 6px 20px rgba(37,99,235,0.3); }
+        .btn-primary-hero:hover {
+            background: var(--accent-hover);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+        }
 
         .btn-outline-hero {
             display: inline-flex;
@@ -297,7 +310,10 @@ if (isLoggedIn()) {
             transition: all 0.2s;
         }
 
-        .btn-outline-hero:hover { border-color: var(--ink-light); color: var(--ink); }
+        .btn-outline-hero:hover {
+            border-color: var(--ink-light);
+            color: var(--ink);
+        }
 
         /* Trusted By */
         .hero-trust {
@@ -324,11 +340,25 @@ if (isLoggedIn()) {
             color: #fff;
         }
 
-        .trust-avatar:first-child { margin-left: 0; }
-        .trust-avatar.a1 { background: var(--accent); }
-        .trust-avatar.a2 { background: var(--emerald); }
-        .trust-avatar.a3 { background: var(--orange); }
-        .trust-avatar.a4 { background: var(--violet); }
+        .trust-avatar:first-child {
+            margin-left: 0;
+        }
+
+        .trust-avatar.a1 {
+            background: var(--accent);
+        }
+
+        .trust-avatar.a2 {
+            background: var(--emerald);
+        }
+
+        .trust-avatar.a3 {
+            background: var(--orange);
+        }
+
+        .trust-avatar.a4 {
+            background: var(--violet);
+        }
 
         .trust-text {
             font-size: 0.76rem;
@@ -336,7 +366,10 @@ if (isLoggedIn()) {
             line-height: 1.4;
         }
 
-        .trust-text strong { color: var(--ink-light); font-weight: 600; }
+        .trust-text strong {
+            color: var(--ink-light);
+            font-weight: 600;
+        }
 
         /* Hero Preview Card */
         .hero-visual {
@@ -370,9 +403,17 @@ if (isLoggedIn()) {
             border-radius: 50%;
         }
 
-        .preview-dots .d-r { background: #ff5f57; }
-        .preview-dots .d-y { background: #febc2e; }
-        .preview-dots .d-g { background: #28c840; }
+        .preview-dots .d-r {
+            background: #ff5f57;
+        }
+
+        .preview-dots .d-y {
+            background: #febc2e;
+        }
+
+        .preview-dots .d-g {
+            background: #28c840;
+        }
 
         .preview-title {
             font-size: 0.72rem;
@@ -410,13 +451,40 @@ if (isLoggedIn()) {
             flex-shrink: 0;
         }
 
-        .p-stat-icon.ic-blue { background: var(--accent-light); color: var(--accent); }
-        .p-stat-icon.ic-green { background: var(--emerald-light); color: var(--emerald); }
-        .p-stat-icon.ic-orange { background: var(--orange-light); color: var(--orange); }
-        .p-stat-icon.ic-violet { background: var(--violet-light); color: var(--violet); }
+        .p-stat-icon.ic-blue {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
 
-        .p-stat-num { font-size: 1.2rem; font-weight: 700; color: var(--ink); line-height: 1; }
-        .p-stat-lbl { font-size: 0.62rem; color: var(--ink-faint); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+        .p-stat-icon.ic-green {
+            background: var(--emerald-light);
+            color: var(--emerald);
+        }
+
+        .p-stat-icon.ic-orange {
+            background: var(--orange-light);
+            color: var(--orange);
+        }
+
+        .p-stat-icon.ic-violet {
+            background: var(--violet-light);
+            color: var(--violet);
+        }
+
+        .p-stat-num {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1;
+        }
+
+        .p-stat-lbl {
+            font-size: 0.62rem;
+            color: var(--ink-faint);
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
 
         .preview-activity {
             background: var(--surface-dim);
@@ -425,7 +493,14 @@ if (isLoggedIn()) {
             padding: 0.9rem;
         }
 
-        .pa-title { font-size: 0.68rem; font-weight: 600; color: var(--ink-light); margin-bottom: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; }
+        .pa-title {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--ink-light);
+            margin-bottom: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
 
         .pa-row {
             display: flex;
@@ -435,7 +510,9 @@ if (isLoggedIn()) {
             border-bottom: 1px solid var(--border-light);
         }
 
-        .pa-row:last-child { border-bottom: none; }
+        .pa-row:last-child {
+            border-bottom: none;
+        }
 
         .pa-left {
             display: flex;
@@ -450,11 +527,24 @@ if (isLoggedIn()) {
             flex-shrink: 0;
         }
 
-        .pa-dot.active { background: var(--orange); }
-        .pa-dot.done { background: var(--emerald); }
+        .pa-dot.active {
+            background: var(--orange);
+        }
 
-        .pa-plate { font-size: 0.72rem; font-weight: 600; color: var(--ink); }
-        .pa-time { font-size: 0.62rem; color: var(--ink-faint); }
+        .pa-dot.done {
+            background: var(--emerald);
+        }
+
+        .pa-plate {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .pa-time {
+            font-size: 0.62rem;
+            color: var(--ink-faint);
+        }
 
         /* floating badge */
         .float-badge {
@@ -490,15 +580,40 @@ if (isLoggedIn()) {
             font-size: 0.8rem;
         }
 
-        .fb-icon.green { background: var(--emerald-light); color: var(--emerald); }
-        .fb-icon.blue { background: var(--accent-light); color: var(--accent); }
+        .fb-icon.green {
+            background: var(--emerald-light);
+            color: var(--emerald);
+        }
 
-        .fb-text { font-size: 0.7rem; font-weight: 600; color: var(--ink); line-height: 1.35; }
-        .fb-text small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 0.6rem; }
+        .fb-icon.blue {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .fb-text {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.35;
+        }
+
+        .fb-text small {
+            display: block;
+            font-weight: 400;
+            color: var(--ink-faint);
+            font-size: 0.6rem;
+        }
 
         @keyframes floatBadge {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         /* ===== FEATURES ===== */
@@ -571,12 +686,35 @@ if (isLoggedIn()) {
             margin-bottom: 1.35rem;
         }
 
-        .feat-icon.fc-blue { background: var(--accent-light); color: var(--accent); }
-        .feat-icon.fc-green { background: var(--emerald-light); color: var(--emerald); }
-        .feat-icon.fc-orange { background: var(--orange-light); color: var(--orange); }
-        .feat-icon.fc-sky { background: var(--sky-light); color: var(--sky); }
-        .feat-icon.fc-violet { background: var(--violet-light); color: var(--violet); }
-        .feat-icon.fc-rose { background: var(--rose-light); color: var(--rose); }
+        .feat-icon.fc-blue {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .feat-icon.fc-green {
+            background: var(--emerald-light);
+            color: var(--emerald);
+        }
+
+        .feat-icon.fc-orange {
+            background: var(--orange-light);
+            color: var(--orange);
+        }
+
+        .feat-icon.fc-sky {
+            background: var(--sky-light);
+            color: var(--sky);
+        }
+
+        .feat-icon.fc-violet {
+            background: var(--violet-light);
+            color: var(--violet);
+        }
+
+        .feat-icon.fc-rose {
+            background: var(--rose-light);
+            color: var(--rose);
+        }
 
         .feat-card h3 {
             font-size: 0.95rem;
@@ -629,9 +767,20 @@ if (isLoggedIn()) {
             margin: 0 auto 1.35rem;
         }
 
-        .role-icon.ri-admin { background: var(--accent-light); color: var(--accent); }
-        .role-icon.ri-guard { background: var(--emerald-light); color: var(--emerald); }
-        .role-icon.ri-emp { background: var(--orange-light); color: var(--orange); }
+        .role-icon.ri-admin {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .role-icon.ri-guard {
+            background: var(--emerald-light);
+            color: var(--emerald);
+        }
+
+        .role-icon.ri-emp {
+            background: var(--orange-light);
+            color: var(--orange);
+        }
 
         .role-card h3 {
             font-size: 1rem;
@@ -672,7 +821,7 @@ if (isLoggedIn()) {
 
         .stat-item p {
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             margin: 0;
             text-transform: uppercase;
             letter-spacing: 0.06em;
@@ -722,7 +871,11 @@ if (isLoggedIn()) {
             transition: all 0.2s;
         }
 
-        .btn-cta:hover { background: var(--ink-light); color: #fff; box-shadow: var(--shadow-md); }
+        .btn-cta:hover {
+            background: var(--ink-light);
+            color: #fff;
+            box-shadow: var(--shadow-md);
+        }
 
         /* ===== FOOTER ===== */
         .hp-footer {
@@ -735,23 +888,69 @@ if (isLoggedIn()) {
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 991px) {
-            .hp-hero-inner { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
-            .hp-hero h1 { font-size: 2.6rem; }
-            .hero-desc { margin-left: auto; margin-right: auto; }
-            .hero-btns { justify-content: center; }
-            .hero-trust { justify-content: center; }
-            .hero-visual { display: none; }
-            .feat-grid, .roles-grid { grid-template-columns: 1fr 1fr; }
-            .stats-inner { grid-template-columns: repeat(2, 1fr); }
-            .hp-nav-links { display: none; }
+            .hp-hero-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hp-hero h1 {
+                font-size: 2.6rem;
+            }
+
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+
+            .hero-trust {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .feat-grid,
+            .roles-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hp-nav-links {
+                display: none;
+            }
         }
 
         @media (max-width: 576px) {
-            .hp-hero h1 { font-size: 2rem; }
-            .feat-grid, .roles-grid { grid-template-columns: 1fr; }
-            .stats-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-            .hero-btns { flex-direction: column; }
-            .section-heading { font-size: 1.65rem; }
+            .hp-hero h1 {
+                font-size: 2rem;
+            }
+
+            .feat-grid,
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+            }
+
+            .section-heading {
+                font-size: 1.65rem;
+            }
         }
     </style>
 </head>
@@ -783,9 +982,9 @@ if (isLoggedIn()) {
         <div class="hp-hero-inner">
             <div>
                 <div class="hero-tag"><i class="fas fa-bolt"></i> Modern Parking Management</div>
-                <h1>ParkAdmin<br><span class="accent-word">Parking Control and Monitoring</span><br>System</h1>
+                <h1>ParkEase<br><span class="accent-word">Parking Control and Monitoring</span><br>System</h1>
                 <p class="hero-desc">
-                    Streamline your entire parking workflow — from vehicle check‑in to checkout — with real‑time slot monitoring and role‑based dashboards.
+                    Easily manage every aspect of your parking workflow, from vehicle check-in to checkout, with real-time slot monitoring and role-based dashboards.
                 </p>
                 <div class="hero-btns">
                     <a href="login.php" class="btn-primary-hero"><i class="fas fa-arrow-right"></i> Get Started</a>
@@ -812,19 +1011,31 @@ if (isLoggedIn()) {
                     <div class="preview-grid">
                         <div class="p-stat">
                             <div class="p-stat-icon ic-blue"><i class="fas fa-users"></i></div>
-                            <div><div class="p-stat-num">124</div><div class="p-stat-lbl">Users</div></div>
+                            <div>
+                                <div class="p-stat-num">124</div>
+                                <div class="p-stat-lbl">Users</div>
+                            </div>
                         </div>
                         <div class="p-stat">
                             <div class="p-stat-icon ic-green"><i class="fas fa-car"></i></div>
-                            <div><div class="p-stat-num">89</div><div class="p-stat-lbl">Vehicles</div></div>
+                            <div>
+                                <div class="p-stat-num">89</div>
+                                <div class="p-stat-lbl">Vehicles</div>
+                            </div>
                         </div>
                         <div class="p-stat">
                             <div class="p-stat-icon ic-orange"><i class="fas fa-ticket-alt"></i></div>
-                            <div><div class="p-stat-num">37</div><div class="p-stat-lbl">Active</div></div>
+                            <div>
+                                <div class="p-stat-num">37</div>
+                                <div class="p-stat-lbl">Active</div>
+                            </div>
                         </div>
                         <div class="p-stat">
                             <div class="p-stat-icon ic-violet"><i class="fas fa-parking"></i></div>
-                            <div><div class="p-stat-num">52</div><div class="p-stat-lbl">Available</div></div>
+                            <div>
+                                <div class="p-stat-num">52</div>
+                                <div class="p-stat-lbl">Available</div>
+                            </div>
                         </div>
                     </div>
                     <div class="preview-activity">
@@ -957,7 +1168,7 @@ if (isLoggedIn()) {
 
     <!-- Footer -->
     <footer class="hp-footer">
-        <p>&copy; <?php echo date('Y'); ?> ParkAdmin — Parking Control and Monitoring System</p>
+        <p>&copy; <?php echo date('Y'); ?> ParkEase — Parking Control and Monitoring System</p>
     </footer>
 
     <script>
@@ -965,13 +1176,14 @@ if (isLoggedIn()) {
         // BACKGROUND EFFECT — interactive particles + dot grid + aura blobs
         // Mouse cursor: particles flee, dots brighten, ripple on move
         // ============================================================
-        (function () {
+        (function() {
             const canvas = document.getElementById('veilCanvas');
             if (!canvas) return;
             const hero = canvas.closest('.hp-hero');
             const ctx = canvas.getContext('2d');
 
             let W, H;
+
             function resize() {
                 W = canvas.width = hero.offsetWidth;
                 H = canvas.height = hero.offsetHeight;
@@ -979,53 +1191,95 @@ if (isLoggedIn()) {
             }
 
             // --- Mouse tracking ---
-            let mouse = { x: -999, y: -999 };
+            let mouse = {
+                x: -999,
+                y: -999
+            };
             let ripples = [];
             hero.addEventListener('mousemove', e => {
                 const rect = canvas.getBoundingClientRect();
                 mouse.x = e.clientX - rect.left;
                 mouse.y = e.clientY - rect.top;
             });
-            hero.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+            hero.addEventListener('mouseleave', () => {
+                mouse.x = -999;
+                mouse.y = -999;
+            });
             hero.addEventListener('click', e => {
                 const rect = canvas.getBoundingClientRect();
-                ripples.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, r: 0, alpha: 0.5 });
+                ripples.push({
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top,
+                    r: 0,
+                    alpha: 0.5
+                });
             });
 
             // --- Dot grid ---
             const CELL = 52;
             let dots = [];
+
             function initGrid() {
                 dots = [];
                 const cols = Math.ceil(W / CELL) + 1;
                 const rows = Math.ceil(H / CELL) + 1;
                 for (let r = 0; r < rows; r++) {
                     for (let c = 0; c < cols; c++) {
-                        dots.push({ x: c * CELL, y: r * CELL, phase: Math.random() * Math.PI * 2 });
+                        dots.push({
+                            x: c * CELL,
+                            y: r * CELL,
+                            phase: Math.random() * Math.PI * 2
+                        });
                     }
                 }
             }
 
             // --- Floating particles ---
             const NUM_PARTICLES = 32;
-            const particles = Array.from({ length: NUM_PARTICLES }, () => ({
+            const particles = Array.from({
+                length: NUM_PARTICLES
+            }, () => ({
                 x: Math.random() * 1200,
                 y: Math.random() * 800,
                 r: 2.5 + Math.random() * 4,
                 vx: (Math.random() - 0.5) * 0.45,
                 vy: (Math.random() - 0.5) * 0.45,
-                baseVx: 0, baseVy: 0,
+                baseVx: 0,
+                baseVy: 0,
                 opacity: 0.10 + Math.random() * 0.20,
                 col: [Math.random() < 0.5 ? 99 : 37, Math.random() < 0.5 ? 102 : 99, Math.random() < 0.5 ? 241 : 235],
             }));
             // Store base velocities
-            particles.forEach(p => { p.baseVx = p.vx; p.baseVy = p.vy; });
+            particles.forEach(p => {
+                p.baseVx = p.vx;
+                p.baseVy = p.vy;
+            });
 
             // --- Aura blobs ---
-            const auras = [
-                { rx: 0.15, ry: 0.30, r: 0.45, a: 0.0018, ph: 0.0, col: [219, 234, 254] },
-                { rx: 0.80, ry: 0.65, r: 0.40, a: 0.0022, ph: 2.1, col: [237, 233, 254] },
-                { rx: 0.50, ry: 0.80, r: 0.35, a: 0.0014, ph: 4.2, col: [204, 251, 241] },
+            const auras = [{
+                    rx: 0.15,
+                    ry: 0.30,
+                    r: 0.45,
+                    a: 0.0018,
+                    ph: 0.0,
+                    col: [219, 234, 254]
+                },
+                {
+                    rx: 0.80,
+                    ry: 0.65,
+                    r: 0.40,
+                    a: 0.0022,
+                    ph: 2.1,
+                    col: [237, 233, 254]
+                },
+                {
+                    rx: 0.50,
+                    ry: 0.80,
+                    r: 0.35,
+                    a: 0.0014,
+                    ph: 4.2,
+                    col: [204, 251, 241]
+                },
             ];
 
             let t = 0;
@@ -1041,9 +1295,9 @@ if (isLoggedIn()) {
                     const radius = a.r * Math.max(W, H);
                     const [r, g, b] = a.col;
                     const g2 = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
-                    g2.addColorStop(0,   `rgba(${r},${g},${b},0.55)`);
+                    g2.addColorStop(0, `rgba(${r},${g},${b},0.55)`);
                     g2.addColorStop(0.5, `rgba(${r},${g},${b},0.18)`);
-                    g2.addColorStop(1,   `rgba(${r},${g},${b},0)`);
+                    g2.addColorStop(1, `rgba(${r},${g},${b},0)`);
                     ctx.fillStyle = g2;
                     ctx.fillRect(0, 0, W, H);
                 });
@@ -1051,9 +1305,9 @@ if (isLoggedIn()) {
                 // 2. Mouse cursor glow
                 if (mouse.x > 0) {
                     const mg = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 110);
-                    mg.addColorStop(0,   'rgba(99,102,241,0.12)');
+                    mg.addColorStop(0, 'rgba(99,102,241,0.12)');
                     mg.addColorStop(0.5, 'rgba(99,102,241,0.05)');
-                    mg.addColorStop(1,   'rgba(99,102,241,0)');
+                    mg.addColorStop(1, 'rgba(99,102,241,0)');
                     ctx.fillStyle = mg;
                     ctx.fillRect(0, 0, W, H);
                 }
@@ -1075,12 +1329,13 @@ if (isLoggedIn()) {
 
                 // 4. Dot grid (brighten near cursor)
                 dots.forEach(d => {
-                    const mdx = d.x - mouse.x, mdy = d.y - mouse.y;
-                    const mdist = Math.sqrt(mdx*mdx + mdy*mdy);
+                    const mdx = d.x - mouse.x,
+                        mdy = d.y - mouse.y;
+                    const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
                     const proximity = Math.max(0, 1 - mdist / 100);
                     const pulse = 0.5 + 0.5 * Math.sin(t * 0.018 + d.phase);
                     const alpha = 0.06 + pulse * 0.10 + proximity * 0.30;
-                    const rad   = 1.5 + pulse * 1.0 + proximity * 2.5;
+                    const rad = 1.5 + pulse * 1.0 + proximity * 2.5;
                     ctx.beginPath();
                     ctx.arc(d.x, d.y, rad, 0, Math.PI * 2);
                     ctx.fillStyle = `rgba(99,102,241,${Math.min(alpha, 0.5)})`;
@@ -1089,11 +1344,11 @@ if (isLoggedIn()) {
 
                 // 5. Particles — flee from cursor
                 const FLEE_RADIUS = 120;
-                const FLEE_FORCE  = 2.5;
+                const FLEE_FORCE = 2.5;
                 particles.forEach(p => {
                     const dx = p.x - mouse.x;
                     const dy = p.y - mouse.y;
-                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < FLEE_RADIUS && dist > 0) {
                         const force = (1 - dist / FLEE_RADIUS) * FLEE_FORCE;
                         p.vx += (dx / dist) * force * 0.08;
@@ -1103,8 +1358,11 @@ if (isLoggedIn()) {
                     p.vx += (p.baseVx - p.vx) * 0.04;
                     p.vy += (p.baseVy - p.vy) * 0.04;
                     // Speed cap
-                    const spd = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
-                    if (spd > 3) { p.vx = p.vx/spd*3; p.vy = p.vy/spd*3; }
+                    const spd = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+                    if (spd > 3) {
+                        p.vx = p.vx / spd * 3;
+                        p.vy = p.vy / spd * 3;
+                    }
 
                     p.x += p.vx;
                     p.y += p.vy;
@@ -1125,7 +1383,7 @@ if (isLoggedIn()) {
                     for (let j = i + 1; j < particles.length; j++) {
                         const dx = particles[i].x - particles[j].x;
                         const dy = particles[i].y - particles[j].y;
-                        const dist = Math.sqrt(dx*dx + dy*dy);
+                        const dist = Math.sqrt(dx * dx + dy * dy);
                         if (dist < 130) {
                             ctx.save();
                             ctx.globalAlpha = (1 - dist / 130) * 0.07;
@@ -1145,7 +1403,10 @@ if (isLoggedIn()) {
             }
 
             resize();
-            particles.forEach(p => { p.x = Math.random() * W; p.y = Math.random() * H; });
+            particles.forEach(p => {
+                p.x = Math.random() * W;
+                p.y = Math.random() * H;
+            });
             window.addEventListener('resize', resize);
             draw();
         })();
@@ -1160,7 +1421,10 @@ if (isLoggedIn()) {
             a.addEventListener('click', e => {
                 e.preventDefault();
                 const t = document.querySelector(a.getAttribute('href'));
-                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (t) t.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             });
         });
     </script>

@@ -20,7 +20,15 @@ if (!isset($areas)) $areas = [];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
-    <script>document.documentElement.className='sidebar-collapsed';var sc=localStorage.getItem('sidebarCollapsed');if(sc==='false'){document.documentElement.className='';}else{document.documentElement.className='sidebar-collapsed';}</script>
+    <script>
+        document.documentElement.className = 'sidebar-collapsed';
+        var sc = localStorage.getItem('sidebarCollapsed');
+        if (sc === 'false') {
+            document.documentElement.className = '';
+        } else {
+            document.documentElement.className = 'sidebar-collapsed';
+        }
+    </script>
 </head>
 
 <body class="admin-body" id="adminBody">
@@ -151,7 +159,9 @@ if (!isset($areas)) $areas = [];
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php else: ?>
-                                        <tr><td colspan="4" class="text-center" style="padding:2rem;color:var(--text-muted);">No slots found. Add areas first, then create slots.</td></tr>
+                                        <tr>
+                                            <td colspan="4" class="text-center" style="padding:2rem;color:var(--text-muted);">No slots found. Add areas first, then create slots.</td>
+                                        </tr>
                                     <?php endif; ?>
                                 </tbody>
                             </table>
@@ -201,11 +211,23 @@ if (!isset($areas)) $areas = [];
         const sidebar = document.getElementById('adminSidebar');
         const overlay = document.getElementById('sidebarOverlay');
         const body = document.body;
-        (function(){const s=localStorage.getItem('sidebarCollapsed');if(s==='false'){body.classList.remove('sidebar-collapsed');}else{body.classList.add('sidebar-collapsed');}})();
+        (function() {
+            const s = localStorage.getItem('sidebarCollapsed');
+            if (s === 'false') {
+                body.classList.remove('sidebar-collapsed');
+            } else {
+                body.classList.add('sidebar-collapsed');
+            }
+        })();
         document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
             const isMobile = window.innerWidth <= 991;
-            if (isMobile) { sidebar.classList.toggle('show'); overlay.classList.toggle('show'); }
-            else { body.classList.toggle('sidebar-collapsed'); localStorage.setItem('sidebarCollapsed', body.classList.contains('sidebar-collapsed')); }
+            if (isMobile) {
+                sidebar.classList.toggle('show');
+                overlay.classList.toggle('show');
+            } else {
+                body.classList.toggle('sidebar-collapsed');
+                localStorage.setItem('sidebarCollapsed', body.classList.contains('sidebar-collapsed'));
+            }
         });
         overlay?.addEventListener('click', () => {
             sidebar.classList.remove('show');

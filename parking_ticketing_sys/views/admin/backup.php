@@ -87,10 +87,10 @@ if (is_dir($backupDir)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Backup & Recovery — ParkEase</title>
-    <link rel="icon" type="image/png" href="/tecketing/parking_ticketing_sys/public/images/logo.png">
+    <link rel="icon" type="image/png" href="/tecketing/tecketing/parking_ticketing_sys/public/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
+    <link href="/tecketing/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
     <script>document.documentElement.className='sidebar-collapsed';var sc=localStorage.getItem('sidebarCollapsed');if(sc==='false'){document.documentElement.className='';}else{document.documentElement.className='sidebar-collapsed';}</script>
 </head>
 
@@ -99,7 +99,7 @@ if (is_dir($backupDir)) {
 
         <aside class="admin-sidebar" id="adminSidebar">
             <div class="sidebar-brand">
-                <div class="sidebar-brand-icon"><img src="/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Logo"></div>
+                <div class="sidebar-brand-icon"><img src="/tecketing/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Logo"></div>
                 <div class="sidebar-brand-text">ParkEase<small>Parking Control and Monitoring</small></div>
             </div>
             <ul class="sidebar-nav">
@@ -132,7 +132,7 @@ if (is_dir($backupDir)) {
                         <div class="sidebar-user-name"><?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?></div>
                         <div class="sidebar-user-role">Administrator</div>
                     </div>
-                    <a href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="sidebar-logout-btn" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+                    <a href="/tecketing/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="sidebar-logout-btn" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
                 </div>
             </div>
         </aside>

@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 session_start();
 
 require_once '../../controllers/AdminController.php';
@@ -12,11 +12,11 @@ AdminController::manageAreas();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Areas â€” ParkEase</title>
-    <link rel="icon" type="image/png" href="/tecketing/parking_ticketing_sys/public/images/logo.png">
+    <title>Areas — ParkEase</title>
+    <link rel="icon" type="image/png" href="/tecketing/tecketing/parking_ticketing_sys/public/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
+    <link href="/tecketing/tecketing/parking_ticketing_sys/public/css/admin.css" rel="stylesheet">
     <script>
         document.documentElement.className = 'sidebar-collapsed';
         var sc = localStorage.getItem('sidebarCollapsed');
@@ -34,7 +34,7 @@ AdminController::manageAreas();
         <!-- Sidebar -->
         <aside class="admin-sidebar" id="adminSidebar">
             <div class="sidebar-brand">
-                <div class="sidebar-brand-icon"><img src="/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Logo"></div>
+                <div class="sidebar-brand-icon"><img src="/tecketing/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Logo"></div>
                 <div class="sidebar-brand-text">ParkEase<small>Parking Control and Monitoring</small></div>
             </div>
             <ul class="sidebar-nav">
@@ -67,7 +67,7 @@ AdminController::manageAreas();
                         <div class="sidebar-user-name"><?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Admin'); ?></div>
                         <div class="sidebar-user-role">Administrator</div>
                     </div>
-                    <a href="/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="sidebar-logout-btn" title="Logout">
+                    <a href="/tecketing/tecketing/parking_ticketing_sys/controllers/AuthController.php?action=logout" class="sidebar-logout-btn" title="Logout">
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </div>
@@ -125,7 +125,7 @@ AdminController::manageAreas();
                                         <?php foreach ($areas as $area): ?>
                                             <tr data-name="<?php echo strtolower($area['name']); ?>" data-location="<?php echo strtolower($area['location'] ?? ''); ?>">
                                                 <td><strong><?php echo htmlspecialchars($area['name']); ?></strong></td>
-                                                <td><?php echo htmlspecialchars($area['location'] ?? 'â€”'); ?></td>
+                                                <td><?php echo htmlspecialchars($area['location'] ?? '—'); ?></td>
                                                 <td>
                                                     <div style="display:flex;gap:0.35rem;">
                                                         <button class="btn-admin-sm btn-edit" onclick="editArea(<?php echo $area['id']; ?>, '<?php echo htmlspecialchars($area['name']); ?>', '<?php echo htmlspecialchars($area['location'] ?? ''); ?>')" title="Edit">

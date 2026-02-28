@@ -32,7 +32,7 @@ function hasRole($role)
 function requireRole($role)
 {
     if (!hasRole($role)) {
-        redirect('/tecketing/parking_ticketing_sys/views/login.php?error=access_denied');
+        redirect('/tecketing/tecketing/parking_ticketing_sys/views/login.php?error=access_denied');
     }
 }
 

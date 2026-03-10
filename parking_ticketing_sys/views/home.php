@@ -6,13 +6,13 @@ if (isLoggedIn()) {
     $user = getCurrentUser();
     switch ($user['role']) {
         case 'admin':
-            redirect('/tecketing/tecketing/parking_ticketing_sys/views/admin/dashboard.php');
+            redirect('/parking_ticketing_system_v2/parking_ticketing_sys/views/admin/dashboard.php');
             break;
         case 'guard':
-            redirect('/tecketing/tecketing/parking_ticketing_sys/views/guard/dashboard.php');
+            redirect('/parking_ticketing_system_v2/parking_ticketing_sys/views/guard/dashboard.php');
             break;
         case 'employee':
-            redirect('/tecketing/tecketing/parking_ticketing_sys/views/employee/dashboard.php');
+            redirect('/parking_ticketing_system_v2/parking_ticketing_sys/views/employee/dashboard.php');
             break;
     }
 }
@@ -26,7 +26,7 @@ if (isLoggedIn()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ParkEase — Parking Control and Monitoring System</title>
     <meta name="description" content="Modern parking ticketing and management system. Streamline operations with real-time monitoring and automated ticketing.">
-    <link rel="icon" type="image/png" href="/tecketing/tecketing/parking_ticketing_sys/public/images/logo.png">
+    <link rel="icon" type="image/png" href="/parking_ticketing_system_v2/parking_ticketing_sys/public/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -961,7 +961,7 @@ if (isLoggedIn()) {
     <nav class="hp-nav" id="hpNav">
         <div class="hp-nav-inner">
             <a href="#" class="hp-logo">
-                <img src="/tecketing/tecketing/parking_ticketing_sys/public/images/logo.png" alt="Logo">
+                <img src="/parking_ticketing_system_v2/parking_ticketing_sys/public/images/logo.png" alt="Logo">
                 <div class="hp-logo-name">ParkEase<small>Parking Control and Monitoring</small></div>
             </a>
             <div class="hp-nav-right">

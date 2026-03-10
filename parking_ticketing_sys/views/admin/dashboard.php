@@ -155,7 +155,9 @@ AdminController::dashboard();
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php else: ?>
-                                        <tr><td colspan="6" class="text-center" style="padding:2rem;color:var(--text-muted);">No tickets yet</td></tr>
+                                        <tr>
+                                            <td colspan="6" class="text-center" style="padding:2rem;color:var(--text-muted);">No tickets yet</td>
+                                        </tr>
                                     <?php endif; ?>
                                 </tbody>
                             </table>
@@ -169,7 +171,12 @@ AdminController::dashboard();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Date display
-        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
 
         // Mobile sidebar toggle
         const sidebar = document.getElementById('adminSidebar');

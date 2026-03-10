@@ -90,41 +90,29 @@ AdminController::dashboard();
             <div class="admin-content">
                 <!-- Stats -->
                 <div class="stats-row">
-                    <div class="stat-card blue">
-                        <div class="stat-card-top">
-                            <div class="stat-card-icon blue"><i class="fas fa-users"></i></div>
-                            <span class="stat-card-trend"><i class="fas fa-arrow-up"></i> Users</span>
-                        </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon blue"><i class="fas fa-users"></i></div>
                         <div class="stat-card-info">
                             <h3><?php echo count($users); ?></h3>
                             <p>Total Users</p>
                         </div>
                     </div>
-                    <div class="stat-card green">
-                        <div class="stat-card-top">
-                            <div class="stat-card-icon green"><i class="fas fa-car"></i></div>
-                            <span class="stat-card-trend"><i class="fas fa-arrow-up"></i> Vehicles</span>
-                        </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon green"><i class="fas fa-car"></i></div>
                         <div class="stat-card-info">
                             <h3><?php echo count($vehicles); ?></h3>
                             <p>Registered Vehicles</p>
                         </div>
                     </div>
-                    <div class="stat-card cyan">
-                        <div class="stat-card-top">
-                            <div class="stat-card-icon cyan"><i class="fas fa-parking"></i></div>
-                            <span class="stat-card-trend"><i class="fas fa-layer-group"></i> Slots</span>
-                        </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon cyan"><i class="fas fa-parking"></i></div>
                         <div class="stat-card-info">
                             <h3><?php echo count($slots); ?></h3>
                             <p>Total Slots</p>
                         </div>
                     </div>
-                    <div class="stat-card amber">
-                        <div class="stat-card-top">
-                            <div class="stat-card-icon amber"><i class="fas fa-ticket-alt"></i></div>
-                            <span class="stat-card-trend"><i class="fas fa-circle"></i> Live</span>
-                        </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon amber"><i class="fas fa-ticket-alt"></i></div>
                         <div class="stat-card-info">
                             <h3><?php echo $analytics['active_tickets'] ?? 0; ?></h3>
                             <p>Active Tickets</p>

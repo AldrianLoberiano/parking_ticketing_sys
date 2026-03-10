@@ -19,18 +19,18 @@ class AuthController
 
                 switch ($user['role']) {
                     case 'admin':
-                        redirect('/tecketing/tecketing/parking_ticketing_sys/views/admin/dashboard.php');
+                        redirect('/parking_ticketing_system_v2/parking_ticketing_sys/views/admin/dashboard.php');
                         break;
                     case 'guard':
-                        redirect('/tecketing/tecketing/parking_ticketing_sys/views/guard/dashboard.php');
+                        redirect('/parking_ticketing_system_v2/parking_ticketing_sys/views/guard/dashboard.php');
                         break;
                     case 'employee':
-                        redirect('/tecketing/tecketing/parking_ticketing_sys/views/employee/dashboard.php');
+                        redirect('/parking_ticketing_system_v2/parking_ticketing_sys/views/employee/dashboard.php');
                         break;
                 }
             } else {
                 flashMessage('error', 'Invalid email or password');
-                redirect('/tecketing/tecketing/parking_ticketing_sys/views/login.php');
+                redirect('/parking_ticketing_system_v2/parking_ticketing_sys/views/login.php');
             }
         }
     }
@@ -39,7 +39,7 @@ class AuthController
     {
         session_start();
         session_destroy();
-        redirect('/tecketing/tecketing/parking_ticketing_sys/views/login.php');
+        redirect('/parking_ticketing_system_v2/parking_ticketing_sys/views/login.php');
     }
 
     public static function register()

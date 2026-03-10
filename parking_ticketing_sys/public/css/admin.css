@@ -328,62 +328,34 @@ body.admin-body {
 /* ---- Stat Cards ---- */
 .stats-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.25rem;
     margin-bottom: 1.5rem;
 }
 
 .stat-card {
-    background: transparent;
+    background: none;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: 1.5rem 1.5rem 1.25rem;
+    padding: 1.25rem 1.35rem;
     display: flex;
-    flex-direction: column;
-    gap: 1.15rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
+    align-items: center;
+    gap: 1rem;
+    transition: box-shadow 0.2s ease;
 }
 
 .stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-}
-
-/* Color-coded left border */
-.stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    border-radius: 4px 0 0 4px;
-}
-
-.stat-card.blue::before  { background: var(--accent-blue); }
-.stat-card.green::before { background: var(--accent-green); }
-.stat-card.cyan::before  { background: var(--accent-cyan); }
-.stat-card.amber::before { background: var(--accent-amber); }
-.stat-card.red::before   { background: var(--accent-red); }
-.stat-card.purple::before{ background: var(--accent-purple); }
-
-.stat-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
 }
 
 .stat-card-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     flex-shrink: 0;
 }
 
@@ -394,37 +366,20 @@ body.admin-body {
 .stat-card-icon.red    { background: rgba(239, 68, 68, 0.1);   color: var(--accent-red); }
 .stat-card-icon.purple { background: rgba(139, 92, 246, 0.1);  color: var(--accent-purple); }
 
-.stat-card-trend {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    background: var(--surface-muted, #f1f5f9);
-    padding: 0.25rem 0.6rem;
-    border-radius: 50px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-}
-
-.stat-card-trend i {
-    font-size: 0.6rem;
-}
-
 .stat-card-info h3 {
-    font-size: 2rem;
-    font-weight: 800;
+    font-size: 1.5rem;
+    font-weight: 700;
     margin: 0;
     color: var(--text-primary);
-    letter-spacing: -0.03em;
-    line-height: 1;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 .stat-card-info p {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-secondary);
-    margin: 0.3rem 0 0;
+    margin: 0.15rem 0 0;
     font-weight: 500;
-    letter-spacing: 0.01em;
 }
 
 /* ---- Section Headers ---- */
